@@ -1,9 +1,10 @@
 'use client';
 
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import * as runtime from 'react/jsx-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Children, createElement, isValidElement, useState } from 'react';
+import { Children, createElement, isValidElement, useState, use } from 'react';
+import { run } from '@mdx-js/mdx';
 import { codeToHtml } from 'shiki';
 
 function CopyButton({ code }: { code: string }) {
@@ -183,6 +184,7 @@ const components = {
   pre: Pre,
 };
 
-export function MDX({ source }: { source: string }) {
-  return <MDXRemote source={source} components={components} />;
+export function MDX({ code }: { code: string }) {
+  const { default: Content } = use(run(code, { ...runtime, baseUrl: import.meta.url }));
+  return <Content components={components} />;
 }

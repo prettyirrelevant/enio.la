@@ -15,7 +15,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) {
     return;
   }
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function Post({ params }: PageProps) {
   const slug = (await params).slug;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) {
     notFound();
   }
@@ -87,7 +87,7 @@ export default async function Post({ params }: PageProps) {
       </div>
 
       <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline">
-        <MDX source={post.content} />
+        <MDX code={post.code} />
       </article>
     </section>
   );

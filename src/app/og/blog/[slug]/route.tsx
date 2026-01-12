@@ -18,7 +18,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   const title = post?.metadata.title ?? "eniola's blog";
 
   return new ImageResponse(

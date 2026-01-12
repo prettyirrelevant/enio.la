@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { compile } from '@mdx-js/mdx';
 
 export type Metadata = {
   title: string;
@@ -14,23 +15,43 @@ export type FrontmatterParseResult = {
 
 export type MDXFileData = FrontmatterParseResult & {
   slug: string;
+  code: string;
 };
 
-let cachedPosts: MDXFileData[] | null = null;
+const postsCache = new Map<string, MDXFileData>();
+let allPostsCached: MDXFileData[] | null = null;
+
+export async function compileMDX(content: string): Promise<string> {
+  const result = await compile(content, {
+    outputFormat: 'function-body',
+    development: false,
+  });
+  return String(result);
+}
 
 export function getPosts(): MDXFileData[] {
-  if (cachedPosts) {
-    return cachedPosts;
+  if (allPostsCached) {
+    return allPostsCached;
   }
-  cachedPosts = getMDXData(path.join(process.cwd(), 'posts')).sort(
+  allPostsCached = getMDXData(path.join(process.cwd(), 'posts')).sort(
     (a, b) =>
       new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
   );
-  return cachedPosts;
+  return allPostsCached;
 }
 
-export function getPostBySlug(slug: string): MDXFileData | null {
-  return getPosts().find((post) => post.slug === slug) ?? null;
+export async function getPostBySlug(slug: string): Promise<MDXFileData | null> {
+  if (postsCache.has(slug)) {
+    return postsCache.get(slug) ?? null;
+  }
+
+  const post = getPosts().find((post) => post.slug === slug);
+  if (!post) return null;
+
+  const code = await compileMDX(post.content);
+  const compiledPost = { ...post, code };
+  postsCache.set(slug, compiledPost);
+  return compiledPost;
 }
 
 function parseFrontmatter(fileContent: string): FrontmatterParseResult {
@@ -83,6 +104,7 @@ function getMDXData(dir: string): MDXFileData[] {
       metadata,
       slug,
       content,
+      code: '', // Will be compiled on demand
     };
   });
 }
