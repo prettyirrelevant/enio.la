@@ -28,57 +28,40 @@ export async function GET(
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#101010',
         fontFamily: 'Geist Mono',
-        padding: '40px',
-        position: 'relative',
+        padding: '80px',
       }}
     >
-      <img
-        src="https://enio.la/eniola.jpg"
-        alt="Profile"
+      <div
         style={{
-          position: 'absolute',
-          bottom: '40px',
-          right: '40px',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px',
         }}
-      />
+      >
+        <span style={{ color: '#99FFE4', fontSize: 64 }}>*</span>
+        <span style={{ color: '#d4d4d4', fontSize: 64 }}>{page}</span>
+      </div>
 
       <div
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '12px',
-          maxWidth: '90%',
+          gap: '16px',
         }}
       >
-        <span
+        <img
+          src="https://enio.la/eniola.jpg"
+          alt=""
           style={{
-            color: '#99FFE4',
-            fontSize: 48,
-            flexShrink: 0,
+            width: '48px',
+            height: '48px',
+            borderRadius: '50%',
           }}
-        >
-          *
-        </span>
-        <h1
-          style={{
-            fontSize: 48,
-            color: '#fff',
-            margin: 0,
-            lineHeight: 1.2,
-            wordBreak: 'break-word',
-            overflowWrap: 'break-word',
-            maxWidth: '100%',
-          }}
-        >
-          {text}
-        </h1>
+        />
+        <span style={{ color: '#6e6e6e', fontSize: 24 }}>enio.la</span>
       </div>
     </div>,
     {

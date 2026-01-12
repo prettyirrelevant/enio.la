@@ -7,6 +7,16 @@ const fontData = readFileSync(
   join(process.cwd(), 'src/assets/fonts/GeistMono-Regular.ttf'),
 );
 
+function formatDate(date: string) {
+  return new Date(date)
+    .toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
+    .toLowerCase();
+}
+
 export function generateStaticParams() {
   return getPosts().map((post) => ({
     slug: post.slug,
@@ -20,6 +30,7 @@ export async function GET(
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   const title = post?.metadata.title ?? "eniola's blog";
+  const date = post?.metadata.date ? formatDate(post.metadata.date) : '';
 
   return new ImageResponse(
     <div
@@ -28,62 +39,66 @@ export async function GET(
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#101010',
         fontFamily: 'Geist Mono',
-        padding: '40px',
-        position: 'relative',
+        padding: '80px',
       }}
     >
-      <img
-        src="https://enio.la/eniola.jpg"
-        alt="Profile"
-        style={{
-          position: 'absolute',
-          bottom: '40px',
-          right: '40px',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
-        }}
-      />
-
       <div
         style={{
           display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          maxWidth: '90%',
+          flexDirection: 'column',
+          gap: '24px',
         }}
       >
-        <span
-          style={{
-            color: '#99FFE4',
-            fontSize: 48,
-            flexShrink: 0,
-          }}
-        >
-          *
-        </span>
+        <span style={{ color: '#99FFE4', fontSize: 32 }}>*</span>
         <h1
           style={{
-            fontSize: 48,
-            color: '#fff',
+            color: '#d4d4d4',
+            fontSize: 56,
             margin: 0,
             lineHeight: 1.2,
-            wordBreak: 'break-word',
-            overflowWrap: 'break-word',
-            maxWidth: '100%',
+            maxWidth: '900px',
           }}
         >
           {title}
         </h1>
       </div>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+          }}
+        >
+          <img
+            src="https://enio.la/eniola.jpg"
+            alt=""
+            style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '50%',
+            }}
+          />
+          <span style={{ color: '#6e6e6e', fontSize: 24 }}>enio.la</span>
+        </div>
+        {date && (
+          <span style={{ color: '#6e6e6e', fontSize: 24 }}>{date}</span>
+        )}
+      </div>
     </div>,
     {
       width: 1200,
-      height: 600,
+      height: 630,
       fonts: [
         {
           name: 'Geist Mono',
