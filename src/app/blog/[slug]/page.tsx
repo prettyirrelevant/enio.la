@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: PageProps) {
       description: post.metadata.description,
       publishedTime,
       type: 'article',
-      url: `https://eniola.wtf/blog/${post.slug}`,
+      url: `https://enio.la/blog/${post.slug}`,
       images: [
         {
-          url: `https://eniola.wtf/og/blog?title=${post.metadata.title}`,
+          url: `https://enio.la/og/blog?title=${post.metadata.title}`,
         },
       ],
     },
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps) {
       card: 'summary_large_image',
       creator: '@eniolawtf',
       images: [
-        `https://eniola.wtf/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://enio.la/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   };
@@ -62,10 +62,10 @@ export default async function Post({ params }: PageProps) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://eniola.wtf/og/blog?title=${
+            image: `https://enio.la/og/blog?title=${
               post.metadata.title
             }&top=${formatDate(post.metadata.date)}`,
-            url: `https://eniola.wtf/blog/${post.slug}`,
+            url: `https://enio.la/blog/${post.slug}`,
             author: {
               '@type': 'Person',
               name: 'Isaac Adewumi',

@@ -39,7 +39,7 @@ export async function GET(request: Request) {
       }}
     >
       <img
-        src="https://eniola.wtf/eniola.jpg"
+        src="https://enio.la/eniola.jpg"
         style={{
           position: 'absolute',
           bottom: '40px',

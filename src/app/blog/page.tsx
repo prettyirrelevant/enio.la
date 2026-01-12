@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: 'https://eniola.wtf/og/home?title=blog',
+        url: 'https://enio.la/og/home?title=blog',
       },
     ],
   },

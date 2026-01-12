@@ -11,7 +11,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://eniola.wtf'),
+  metadataBase: new URL('https://enio.la'),
   title: {
     default: 'Isaac Adewumi',
     template: '%s | Isaac Adewumi',
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     title: 'Isaac Adewumi',
     description:
       "Building software, documenting learnings, and sharing thoughts on tech, football, and life's adventures.",
-    url: 'https://eniola.wtf',
+    url: 'https://enio.la',
     siteName: 'Isaac Adewumi',
     locale: 'en_US',
     type: 'website',
-    images: ['https://eniola.wtf/og/home'],
+    images: ['https://enio.la/og/home'],
   },
   robots: {
     index: true,

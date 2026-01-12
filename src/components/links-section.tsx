@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const links = [
-  { title: 'email', href: 'mailto:hey@eniola.wtf' },
+  { title: 'email', href: 'mailto:hey@enio.la' },
   { title: 'x.com', href: 'https://x.com/eniolawtf' },
   { title: 'github', href: 'https://github.com/prettyirrelevant' },
   { title: 'linkedin', href: 'https://www.linkedin.com/in/isaac-adewumi' },

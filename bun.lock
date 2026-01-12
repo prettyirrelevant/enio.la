@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "eniola.wtf",
+      "name": "enio.la",
       "dependencies": {
         "@tailwindcss/typography": "^0.5.15",
         "babel-plugin-react-compiler": "^19.0.0-beta-a7bf2bd-20241110",
