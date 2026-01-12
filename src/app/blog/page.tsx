@@ -13,7 +13,7 @@ export default async function BlogPage() {
         <ScrambleText text="blog" />
       </h1>
 
-      <p className="text-sm text-vesper-fg mb-8">
+      <p className="text-sm text-vesper-muted mb-8">
         <span className="sm:hidden">
           press{' '}
           <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">

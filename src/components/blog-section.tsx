@@ -20,11 +20,11 @@ export function BlogSection() {
           >
             <Link
               href={`/blog/${post.slug}`}
-              className="text-vesper-text hover:text-accent transition-colors duration-200"
+              className="text-vesper-subtle hover:text-accent transition-colors duration-200"
             >
               {post.metadata.title.toLowerCase()}
             </Link>
-            <span className="text-sm text-vesper-fg">
+            <span className="text-sm text-vesper-muted">
               {formatDateShort(post.metadata.date)}
             </span>
           </div>

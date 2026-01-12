@@ -104,7 +104,7 @@ export default function ProjectsPage() {
         <ScrambleText text="projects" />
       </h1>
 
-      <p className="text-vesper-fg mb-12 leading-relaxed">
+      <p className="text-vesper-muted mb-12 leading-relaxed">
         here are some of the projects i&apos;ve worked on. i love building tools
         that make developers&apos; lives easier and exploring new technologies
         along the way.

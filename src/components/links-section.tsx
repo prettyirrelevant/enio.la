@@ -18,7 +18,7 @@ export function LinksSection() {
           <Link
             key={link.title}
             href={link.href}
-            className="text-vesper-fg hover:text-accent transition-colors duration-200"
+            className="text-vesper-muted hover:text-accent transition-colors duration-200"
           >
             {link.title}
           </Link>
