@@ -30,7 +30,7 @@ export async function GET(
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#111',
+        backgroundColor: '#101010',
         fontFamily: 'Geist Mono',
         padding: '40px',
         position: 'relative',

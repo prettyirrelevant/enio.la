@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { compile } from '@mdx-js/mdx';
+import rehypeShiki from '@shikijs/rehype';
 
 export type Metadata = {
   title: string;
@@ -25,6 +26,7 @@ export async function compileMDX(content: string): Promise<string> {
   const result = await compile(content, {
     outputFormat: 'function-body',
     development: false,
+    rehypePlugins: [[rehypeShiki, { theme: 'vesper' }]],
   });
   return String(result);
 }

@@ -3,16 +3,15 @@
 import * as runtime from 'react/jsx-runtime';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Children, createElement, isValidElement, useState, use } from 'react';
+import { Children, createElement, useState, use, useRef } from 'react';
 import { run } from '@mdx-js/mdx';
-import { codeToHtml } from 'shiki';
 
-function CopyButton({ code }: { code: string }) {
+function CopyButton({ getCode }: { getCode: () => string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
+      await navigator.clipboard.writeText(getCode());
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -99,44 +98,28 @@ function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
   );
 }
 
-async function Pre({
+function Pre({
   children,
   ...props
 }: React.HtmlHTMLAttributes<HTMLPreElement>) {
-  // Extract className from the children code tag
-  const codeElement = Children.toArray(children).find(
-    (child) => isValidElement(child) && child.type === 'code',
-  ) as React.ReactElement<HTMLPreElement> | undefined;
+  const preRef = useRef<HTMLPreElement>(null);
 
-  const className = codeElement?.props?.className ?? '';
-  const isCodeBlock =
-    typeof className === 'string' && className.startsWith('language-');
-
-  if (isCodeBlock) {
-    const lang = className.split(' ')[0]?.split('-')[1] ?? '';
-    if (!lang) {
-      return <code {...props}>{children}</code>;
+  const getCode = () => {
+    if (preRef.current) {
+      const codeEl = preRef.current.querySelector('code');
+      return codeEl?.textContent ?? '';
     }
+    return '';
+  };
 
-    const codeContent = String(codeElement?.props.children);
-    const html = await codeToHtml(codeContent, {
-      lang,
-      themes: {
-        dark: 'vesper',
-        light: 'vitesse-light',
-      },
-    });
-
-    return (
-      <div className="relative">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <CopyButton code={codeContent} />
-      </div>
-    );
-  }
-
-  // If not, return the component as is
-  return <pre {...props}>{children}</pre>;
+  return (
+    <div className="relative">
+      <pre ref={preRef} {...props}>
+        {children}
+      </pre>
+      <CopyButton getCode={getCode} />
+    </div>
+  );
 }
 
 function slugify(str: string) {

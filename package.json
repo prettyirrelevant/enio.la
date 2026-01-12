@@ -13,13 +13,13 @@
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
+    "@shikijs/rehype": "^3.21.0",
     "@tailwindcss/typography": "^0.5.15",
     "babel-plugin-react-compiler": "^19.0.0-beta-a7bf2bd-20241110",
     "lucide-react": "^0.456.0",
     "next": "15.5.9",
     "react": "19.0",
     "react-dom": "19.0",
-    "shiki": "^1.22.2",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {

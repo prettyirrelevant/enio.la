@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #111;
-  --foreground: #d1d5db;
+  --background: #101010;
+  --foreground: #b0b0b0;
 }
 
 body {
@@ -38,7 +38,7 @@ body {
 }
 
 .prose pre {
-  @apply overflow-x-auto border border-neutral-800 bg-[#111] my-4 rounded-none;
+  @apply overflow-x-auto border border-neutral-800 bg-[#101010] my-4 rounded-none;
 }
 
 .prose code:not(pre code) {
