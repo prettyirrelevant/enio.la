@@ -8,7 +8,7 @@ const posts = getPosts().slice(0, 4);
 export function BlogSection() {
   return (
     <section className="mb-16 animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
+      <h2 className="text-2xl font-bold mb-6 flex items-center text-vesper-text">
         <span className="text-accent mr-2">*</span>
         blog
       </h2>
@@ -20,11 +20,11 @@ export function BlogSection() {
           >
             <Link
               href={`/blog/${post.slug}`}
-              className="text-gray-200 hover:text-accent transition-colors duration-200"
+              className="text-vesper-text hover:text-accent transition-colors duration-200"
             >
               {post.metadata.title.toLowerCase()}
             </Link>
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-vesper-fg">
               {formatDateShort(post.metadata.date)}
             </span>
           </div>

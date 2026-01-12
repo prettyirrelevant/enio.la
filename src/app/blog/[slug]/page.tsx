@@ -77,16 +77,16 @@ export default async function Post({ params }: PageProps) {
         }}
       />
 
-      <h1 className="text-4xl font-bold mb-4 text-white">
+      <h1 className="text-4xl font-bold mb-4 text-vesper-text">
         <span className="text-accent mr-2">*</span>
         {post.metadata.title}
       </h1>
 
-      <div className="mb-8 flex items-center justify-between text-sm text-gray-400">
+      <div className="mb-8 flex items-center justify-between text-sm text-vesper-fg">
         <span>{formatDate(post.metadata.date)}</span>
       </div>
 
-      <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline">
+      <article className="prose prose-invert max-w-none prose-headings:text-vesper-text prose-a:text-vesper-text hover:prose-a:underline">
         <MDX code={post.code} />
       </article>
     </section>

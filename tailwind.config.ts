@@ -15,7 +15,18 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        accent: '#ff6b35',
+        accent: '#99FFE4',
+        vesper: {
+          bg: '#101010',
+          fg: '#999999',
+          muted: '#6e6e6e',
+          subtle: '#b0b0b0',
+          text: '#d4d4d4',
+          border: '#2a2a2a',
+          teal: '#99FFE4',
+          peach: '#FFC799',
+          blue: '#A0E9FF',
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',

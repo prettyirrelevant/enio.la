@@ -99,12 +99,12 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <main className="animate-fade-in-up">
-      <h1 className="text-4xl font-bold mb-8 text-white">
+      <h1 className="text-4xl font-bold mb-8 text-vesper-text">
         <span className="text-accent mr-2">*</span>
         <ScrambleText text="projects" />
       </h1>
 
-      <p className="text-gray-400 mb-12 leading-relaxed">
+      <p className="text-vesper-fg mb-12 leading-relaxed">
         here are some of the projects i&apos;ve worked on. i love building tools
         that make developers&apos; lives easier and exploring new technologies
         along the way.

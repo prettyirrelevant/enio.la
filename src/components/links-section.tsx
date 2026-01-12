@@ -10,7 +10,7 @@ const links = [
 export function LinksSection() {
   return (
     <section className="animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
+      <h2 className="text-2xl font-bold mb-6 flex items-center text-vesper-text">
         <span className="text-accent mr-2">*</span> links
       </h2>
       <div className="flex flex-wrap gap-4 text-sm">
@@ -18,7 +18,7 @@ export function LinksSection() {
           <Link
             key={link.title}
             href={link.href}
-            className="text-gray-400 hover:text-accent transition-colors duration-200"
+            className="text-vesper-fg hover:text-accent transition-colors duration-200"
           >
             {link.title}
           </Link>

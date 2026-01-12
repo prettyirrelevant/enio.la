@@ -22,7 +22,7 @@ function CopyButton({ getCode }: { getCode: () => string }) {
   return (
     <button
       onClick={handleCopy}
-      className="absolute top-2 right-2 p-2 rounded-md bg-neutral-800 hover:bg-neutral-700 transition-colors"
+      className="absolute top-2 right-2 p-2 rounded-md bg-vesper-border hover:bg-vesper-muted transition-colors"
       title={copied ? 'Copied!' : 'Copy code'}
       aria-label={copied ? 'Code copied' : 'Copy code to clipboard'}
     >
@@ -37,7 +37,7 @@ function CopyButton({ getCode }: { getCode: () => string }) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-green-400"
+          className="text-accent"
         >
           <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
           <path d="M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
@@ -54,7 +54,7 @@ function CopyButton({ getCode }: { getCode: () => string }) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-neutral-400"
+          className="text-vesper-fg"
         >
           <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
           <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
