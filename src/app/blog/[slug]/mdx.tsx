@@ -1,6 +1,7 @@
 'use client';
 
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Children, createElement, isValidElement, useState } from 'react';
 import { codeToHtml } from 'shiki';
@@ -38,8 +39,6 @@ function CopyButton({ code }: { code: string }) {
           strokeLinejoin="round"
           className="text-green-400"
         >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path stroke="none" d="M0 0h24v24H0z" />
           <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
           <path d="M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
           <path d="M11 14l2 2l4 -4" />
@@ -57,7 +56,6 @@ function CopyButton({ code }: { code: string }) {
           strokeLinejoin="round"
           className="text-neutral-400"
         >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
           <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
           <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
         </svg>
@@ -66,36 +64,11 @@ function CopyButton({ code }: { code: string }) {
   );
 }
 
-function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
-  const headers = data.headers.map((header) => (
-    <th key={header} className="p-2 text-left">
-      {header}
-    </th>
-  ));
-  const rows = data.rows.map((row, index) => (
-    <tr key={index}>
-      {row.map((cell) => (
-        <td key={cell} className="p-2 text-left">
-          {cell}
-        </td>
-      ))}
-    </tr>
-  ));
+function CustomLink(
+  props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
+) {
+  const href = props.href ?? '';
 
-  return (
-    <table className="w-full border-collapse">
-      <thead>
-        <tr>{headers}</tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
-  );
-}
-
-function CustomLink({
-  href,
-  ...props
-}: React.ComponentProps<typeof Link> & { href: string }) {
   if (href.startsWith('/')) {
     return (
       <Link href={href} {...props}>
@@ -108,11 +81,21 @@ function CustomLink({
     return <a {...props} />;
   }
 
-  return <a href={href} target="_blank" rel="noopener noreferrer" {...props} />;
+  return <a {...props} target="_blank" rel="noopener noreferrer" />;
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
-  return <img alt={props.alt} className="rounded-lg" {...props} />;
+  const { src, alt } = props;
+  if (!src) return null;
+  return (
+    <Image
+      src={src}
+      alt={alt ?? ''}
+      width={800}
+      height={400}
+      className="rounded-lg"
+    />
+  );
 }
 
 async function Pre({
@@ -167,7 +150,9 @@ function slugify(str: string) {
 }
 
 function createHeading(level: number) {
-  const HeadingComponent = ({ children }: { children: React.ReactNode }) => {
+  const HeadingComponent = ({
+    children,
+  }: React.HTMLAttributes<HTMLHeadingElement>) => {
     const childrenString = Children.toArray(children).join('');
     const slug = slugify(childrenString);
     return createElement(`h${level}`, { id: slug }, [
@@ -196,14 +181,8 @@ const components = {
   h5: createHeading(5),
   h6: createHeading(6),
   pre: Pre,
-  Table,
 };
 
-export function MDX(props: any) {
-  return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components ?? {}) }}
-    />
-  );
+export function MDX({ source }: { source: string }) {
+  return <MDXRemote source={source} components={components} />;
 }

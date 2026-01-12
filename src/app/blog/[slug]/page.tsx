@@ -1,10 +1,17 @@
-import { getPostBySlug } from '@/lib/blog';
+import { getPostBySlug, getPosts } from '@/lib/blog';
+import { formatDate } from '@/lib/utils';
 import { notFound } from 'next/navigation';
 import { MDX } from './mdx';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export function generateStaticParams() {
+  return getPosts().map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: PageProps) {
   const slug = (await params).slug;
@@ -88,12 +95,4 @@ export default async function Post({ params }: PageProps) {
       </article>
     </section>
   );
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 }

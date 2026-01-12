@@ -16,8 +16,17 @@ export type MDXFileData = FrontmatterParseResult & {
   slug: string;
 };
 
+let cachedPosts: MDXFileData[] | null = null;
+
 export function getPosts(): MDXFileData[] {
-  return getMDXData(path.join(process.cwd(), 'posts'));
+  if (cachedPosts) {
+    return cachedPosts;
+  }
+  cachedPosts = getMDXData(path.join(process.cwd(), 'posts')).sort(
+    (a, b) =>
+      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
+  );
+  return cachedPosts;
 }
 
 export function getPostBySlug(slug: string): MDXFileData | null {

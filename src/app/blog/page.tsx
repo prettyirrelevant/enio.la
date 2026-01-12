@@ -1,12 +1,9 @@
-import { PostsList } from '@/components/posts-list';
+import { Posts } from '@/components/posts';
 import { ScrambleText } from '@/components/scramble-text';
 import { getPosts } from '@/lib/blog';
 import type { Metadata } from 'next';
 
-const posts = getPosts().sort(
-  (a, b) =>
-    new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime(),
-);
+const posts = getPosts();
 
 export default async function BlogPage() {
   return (
@@ -16,31 +13,40 @@ export default async function BlogPage() {
         <ScrambleText text="blog" />
       </h1>
 
-      <p className="hidden sm:block text-sm text-gray-400 mb-8">
-        press{' '}
-        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
-          /
-        </kbd>{' '}
-        to search • use{' '}
-        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
-          ctrl / ⌘ j
-        </kbd>{' '}
-        and{' '}
-        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
-          ctrl / ⌘ k
-        </kbd>{' '}
-        or{' '}
-        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
-          ↑
-        </kbd>{' '}
-        and{' '}
-        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
-          ↓
-        </kbd>{' '}
-        to navigate
+      <p className="text-sm text-gray-400 mb-8">
+        <span className="sm:hidden">
+          press{' '}
+          <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+            /
+          </kbd>{' '}
+          to search
+        </span>
+        <span className="hidden sm:inline">
+          press{' '}
+          <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+            /
+          </kbd>{' '}
+          to search • use{' '}
+          <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+            ctrl / ⌘ j
+          </kbd>{' '}
+          and{' '}
+          <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+            ctrl / ⌘ k
+          </kbd>{' '}
+          or{' '}
+          <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+            ↑
+          </kbd>{' '}
+          and{' '}
+          <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+            ↓
+          </kbd>{' '}
+          to navigate
+        </span>
       </p>
 
-      <PostsList posts={posts} />
+      <Posts posts={posts} />
     </main>
   );
 }

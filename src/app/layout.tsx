@@ -50,11 +50,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
-          src="https://cdn.seline.so/seline.js"
-          data-token="289f88dc43848ec"
-          strategy="afterInteractive"
-        />
+        {process.env.NEXT_PUBLIC_SELINE_TOKEN && (
+          <Script
+            src="https://cdn.seline.so/seline.js"
+            data-token={process.env.NEXT_PUBLIC_SELINE_TOKEN}
+            strategy="afterInteractive"
+          />
+        )}
       </head>
       <body
         className={`${jetbrainsMono.variable} antialiased min-h-screen font-mono`}
@@ -64,7 +66,6 @@ export default function RootLayout({
           {children}
         </div>
       </body>
-      <Script />
     </html>
   );
 }

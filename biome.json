@@ -30,21 +30,20 @@
     "rules": {
       "recommended": true,
       "style": {
-        "noNonNullAssertion": "off",
-        "noUselessElse": "off",
-        "noParameterAssign": "off"
+        "noNonNullAssertion": "warn",
+        "noUselessElse": "warn",
+        "noParameterAssign": "warn"
       },
       "suspicious": {
-        "noExplicitAny": "off",
-        "noAssignInExpressions": "off",
+        "noExplicitAny": "warn",
+        "noAssignInExpressions": "warn",
         "noConfusingVoidType": "off"
       },
       "complexity": {
-        "noForEach": "off",
-        "noBannedTypes": "off"
+        "noForEach": "off"
       },
       "performance": {
-        "noAccumulatingSpread": "off"
+        "noAccumulatingSpread": "warn"
       }
     }
   }
