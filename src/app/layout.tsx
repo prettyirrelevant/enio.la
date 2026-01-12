@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { Navbar } from '@/components/navbar';
 import Script from 'next/script';
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
+const geistMono = localFont({
+  src: '../assets/fonts/GeistMono-Regular.ttf',
   display: 'swap',
-  variable: '--font-jetbrains-mono',
+  variable: '--font-geist-mono',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: 'Isaac Adewumi',
     locale: 'en_US',
     type: 'website',
-    images: ['https://enio.la/og/home'],
+    images: ['https://enio.la/og/home/home'],
   },
   robots: {
     index: true,
@@ -59,7 +59,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${jetbrainsMono.variable} antialiased min-h-screen font-mono`}
+        className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
         <div className="max-w-4xl mx-auto px-4 py-8">
           <Navbar />

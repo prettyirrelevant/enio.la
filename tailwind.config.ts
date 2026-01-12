@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['var(--font-jetbrains-mono)'],
+        mono: ['var(--font-geist-mono)'],
       },
       colors: {
         background: 'var(--background)',

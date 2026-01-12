@@ -1,36 +1,25 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
+const fontData = readFileSync(
+  join(process.cwd(), 'src/assets/fonts/GeistMono-Regular.ttf'),
+);
 
-const MAX_TITLE_LENGTH = 100;
+const PAGES = ['home', 'blog', 'projects'] as const;
 
-async function loadGoogleFont(font: string, text: string) {
-  try {
-    const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`;
-    const css = await (await fetch(url)).text();
-    const resource = css.match(
-      /src: url\((.+)\) format\('(opentype|truetype)'\)/,
-    );
-
-    if (resource) {
-      const response = await fetch(resource[1]);
-      if (response.status === 200) {
-        return await response.arrayBuffer();
-      }
-    }
-  } catch {
-    // Fall through to return undefined
-  }
-  return undefined;
+export function generateStaticParams() {
+  return PAGES.map((page) => ({
+    page,
+  }));
 }
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const rawTitle = searchParams.get('title');
-  const title = rawTitle?.slice(0, MAX_TITLE_LENGTH);
-  const text = title ? `eniola • ${title}` : 'eniola • home';
-
-  const fontData = await loadGoogleFont('Geist Mono', text);
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ page: string }> },
+) {
+  const { page } = await params;
+  const text = `eniola • ${page}`;
 
   return new ImageResponse(
     <div
@@ -42,7 +31,7 @@ export async function GET(request: Request) {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#111',
-        fontFamily: fontData ? 'Geist Mono' : 'monospace',
+        fontFamily: 'Geist Mono',
         padding: '40px',
         position: 'relative',
       }}
@@ -95,15 +84,14 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 630,
-      fonts: fontData
-        ? [
-            {
-              name: 'Geist Mono',
-              data: fontData,
-              style: 'normal',
-            },
-          ]
-        : [],
+      fonts: [
+        {
+          name: 'Geist Mono',
+          data: fontData,
+          style: 'normal',
+          weight: 400,
+        },
+      ],
     },
   );
 }

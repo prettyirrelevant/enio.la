@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps) {
       url: `https://enio.la/blog/${post.slug}`,
       images: [
         {
-          url: `https://enio.la/og/blog?title=${post.metadata.title}`,
+          url: `https://enio.la/og/blog/${post.slug}`,
         },
       ],
     },
@@ -42,9 +42,7 @@ export async function generateMetadata({ params }: PageProps) {
       description: post.metadata.description,
       card: 'summary_large_image',
       creator: '@eniolawtf',
-      images: [
-        `https://enio.la/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
-      ],
+      images: [`https://enio.la/og/blog/${post.slug}`],
     },
   };
 }
@@ -69,9 +67,7 @@ export default async function Post({ params }: PageProps) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://enio.la/og/blog?title=${
-              post.metadata.title
-            }&top=${formatDate(post.metadata.date)}`,
+            image: `https://enio.la/og/blog/${post.slug}`,
             url: `https://enio.la/blog/${post.slug}`,
             author: {
               '@type': 'Person',
