@@ -29,7 +29,7 @@ body {
 }
 
 .prose pre code {
-  @apply p-6 block bg-transparent;
+  @apply py-4 px-2 block bg-transparent;
   border: initial;
   line-height: 1.8;
   counter-reset: line;
