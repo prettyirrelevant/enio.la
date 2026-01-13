@@ -81,7 +81,7 @@ export default async function Post({ params }: PageProps) {
 
       <p className="text-sm text-muted mb-12">{formatDate(post.metadata.date)}</p>
 
-      <article className="prose prose-invert max-w-none prose-headings:text-primary prose-p:text-secondary prose-li:text-secondary prose-a:text-accent hover:prose-a:underline">
+      <article className="prose prose-sm sm:prose-base prose-invert max-w-none prose-headings:text-primary prose-p:text-secondary prose-li:text-secondary prose-a:text-accent hover:prose-a:underline">
         <MDX code={post.code} />
       </article>
     </section>

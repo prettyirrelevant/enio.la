@@ -37,7 +37,7 @@ body {
 }
 
 .prose pre code [data-line] {
-  @apply inline-block w-full;
+  @apply inline-block w-full pr-2;
 }
 
 .prose pre code [data-line]::before {
