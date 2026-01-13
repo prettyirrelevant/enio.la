@@ -54,7 +54,8 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <div className="animate-fade-in">
-      <h1 className="text-3xl mb-12 text-primary">projects</h1>
+      <h1 className="text-3xl mb-4 text-primary">projects</h1>
+      <p className="text-sm text-muted mb-12">some things i've built</p>
 
       <div className="divide-y divide-border">
         {projects.map((project) => (

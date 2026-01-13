@@ -24,7 +24,7 @@ export function BlogSection() {
         ))}
       </div>
       <Link href="/blog" className="inline-block mt-4 text-sm text-muted hover:text-accent transition-colors">
-        all posts
+        all writings →
       </Link>
     </section>
   );

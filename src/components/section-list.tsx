@@ -42,7 +42,7 @@ export function SectionList({
       </div>
       {viewAllHref && (
         <Link href={viewAllHref} className="inline-block mt-4 text-sm text-muted hover:text-accent transition-colors">
-          {viewAllText}
+          {viewAllText} →
         </Link>
       )}
     </section>
