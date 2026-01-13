@@ -34,16 +34,7 @@ export async function GET(
         padding: '80px',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '20px',
-        }}
-      >
-        <span style={{ color: '#99FFE4', fontSize: 64 }}>*</span>
-        <span style={{ color: '#d4d4d4', fontSize: 64 }}>{page}</span>
-      </div>
+      <span style={{ color: '#e0e0e0', fontSize: 64 }}>{page}</span>
 
       <div
         style={{
@@ -61,7 +52,7 @@ export async function GET(
             borderRadius: '50%',
           }}
         />
-        <span style={{ color: '#6e6e6e', fontSize: 24 }}>enio.la</span>
+        <span style={{ color: '#606060', fontSize: 24 }}>enio.la</span>
       </div>
     </div>,
     {

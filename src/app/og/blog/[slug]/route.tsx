@@ -45,26 +45,17 @@ export async function GET(
         padding: '80px',
       }}
     >
-      <div
+      <h1
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '24px',
+          color: '#e0e0e0',
+          fontSize: 56,
+          margin: 0,
+          lineHeight: 1.2,
+          maxWidth: '900px',
         }}
       >
-        <span style={{ color: '#99FFE4', fontSize: 32 }}>*</span>
-        <h1
-          style={{
-            color: '#d4d4d4',
-            fontSize: 56,
-            margin: 0,
-            lineHeight: 1.2,
-            maxWidth: '900px',
-          }}
-        >
-          {title}
-        </h1>
-      </div>
+        {title}
+      </h1>
 
       <div
         style={{
@@ -89,10 +80,10 @@ export async function GET(
               borderRadius: '50%',
             }}
           />
-          <span style={{ color: '#6e6e6e', fontSize: 24 }}>enio.la</span>
+          <span style={{ color: '#606060', fontSize: 24 }}>enio.la</span>
         </div>
         {date && (
-          <span style={{ color: '#6e6e6e', fontSize: 24 }}>{date}</span>
+          <span style={{ color: '#606060', fontSize: 24 }}>{date}</span>
         )}
       </div>
     </div>,
