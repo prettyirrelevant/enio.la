@@ -20,7 +20,7 @@ export function ProjectCard({
   return (
     <article className="py-8 border-t border-border first:border-t-0">
       <Link href={href} target="_blank" className="group">
-        <h2 className="text-xl text-primary group-hover:text-accent transition-colors">
+        <h2 className="text-xl text-secondary group-hover:text-accent transition-colors">
           {title}
         </h2>
         <p className="text-sm text-muted mt-1">

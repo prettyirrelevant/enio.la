@@ -8,7 +8,6 @@ const projects = [
       "students' attendance system using bluetooth low energy with esp32",
     role: 'creator',
     period: 'aug 2024',
-    impact: 'cross-platform mobile app with secure ble-based verification',
     href: 'https://github.com/prettyirrelevant/final-year-project',
   },
   {
@@ -17,7 +16,6 @@ const projects = [
       'proof of concept fiat-to-crypto ramp for converting naira to stablecoin with p2p exchange',
     role: 'backend & smart contracts',
     period: 'may 2024',
-    impact: 'multi-component system spanning contracts, api, and frontend',
     href: 'https://github.com/prettyirrelevant/wrapped-naira',
   },
   {
@@ -26,7 +24,6 @@ const projects = [
       'sandbox environment for executing code snippets from github gists',
     role: 'creator',
     period: 'jan 2024',
-    impact: 'chrome extension with docker-sandboxed multi-language execution',
     href: 'https://github.com/prettyirrelevant/gistrunner',
   },
   {
@@ -34,7 +31,6 @@ const projects = [
     description: 'token bridge across evm compatible chains',
     role: 'backend',
     period: 'aug 2023',
-    impact: 'secure cross-chain transfers with multi-chain support',
     href: 'https://github.com/prettyirrelevant/bridgebloc',
   },
   {
@@ -43,7 +39,6 @@ const projects = [
       "browser extension that decodes etherscan transactions using rotki's decoder",
     role: 'creator',
     period: 'jun 2023',
-    impact: 'human-readable defi transaction interpretation',
     href: 'https://github.com/prettyirrelevant/decodify',
   },
   {
@@ -52,7 +47,6 @@ const projects = [
       'playlist converter for spotify, youtube music, and deezer',
     role: 'creator',
     period: 'apr 2023',
-    impact: 'seamless cross-platform playlist migration',
     href: 'https://github.com/prettyirrelevant/waakye',
   },
 ];
@@ -60,10 +54,7 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <div className="animate-fade-in">
-      <h1 className="text-3xl mb-6 text-primary">projects</h1>
-      <p className="text-secondary mb-12 leading-relaxed">
-        tools and experiments in software development.
-      </p>
+      <h1 className="text-3xl mb-12 text-primary">projects</h1>
 
       <div className="divide-y divide-border">
         {projects.map((project) => (

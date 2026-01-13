@@ -28,7 +28,7 @@ export function SectionList({
         {items.map((item) => (
           <article key={item.title} className="group">
             <Link href={item.href} target="_blank">
-              <h3 className="text-lg text-primary group-hover:text-accent transition-colors">
+              <h3 className="text-lg text-secondary group-hover:text-accent transition-colors">
                 {item.title}
               </h3>
               <p className="text-sm text-muted mt-1">
