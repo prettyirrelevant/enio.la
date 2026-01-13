@@ -2,34 +2,11 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="flex items-center justify-center">
-      <div className="space-y-6 text-center">
-        <pre className="font-mono text-accent whitespace-pre">
-          {`
-       _             _            _           
-   _  /\\ \\         / /\\       _  /\\ \\         
-  /\\_\\\\ \\ \\       / /  \\     /\\_\\\\ \\ \\        
- / / / \\ \\ \\     / / /\\ \\   / / / \\ \\ \\       
-/ / /   \\ \\ \\   / / /\\ \\ \\ / / /   \\ \\ \\      
-\\ \\ \\____\\ \\ \\ /_/ /  \\ \\ \\\\ \\ \\____\\ \\ \\     
- \\ \\________\\ \\\\ \\ \\   \\ \\ \\\\ \\________\\ \\    
-  \\/________/\\ \\\\ \\ \\   \\ \\ \\/________/\\ \\   
-            \\ \\ \\\\ \\ \\___\\ \\ \\         \\ \\ \\  
-             \\ \\_\\\\ \\/____\\ \\ \\         \\ \\_\\ 
-              \\/_/ \\_________\\/          \\/_/ 
-                                              
-          `}
-        </pre>
-        <p className="text-vesper-fg">
-          looks like you've wandered into uncharted territory
-        </p>
-        <Link
-          href="/"
-          className="inline-block text-vesper-fg hover:text-accent transition-colors"
-        >
-          return home
-        </Link>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-[50vh]">
+      <h1 className="text-xl mb-4 text-primary">page not found</h1>
+      <Link href="/" className="text-accent hover:underline">
+        return home
+      </Link>
     </div>
   );
 }

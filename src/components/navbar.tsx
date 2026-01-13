@@ -8,7 +8,6 @@ export function Navbar() {
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      // Don't trigger if any input elements are focused or if event target is an input
       if (
         document.activeElement?.tagName === 'INPUT' ||
         document.activeElement?.tagName === 'TEXTAREA' ||
@@ -35,26 +34,16 @@ export function Navbar() {
   }, [router]);
 
   return (
-    <nav className="flex items-center justify-between mb-12 text-sm">
-      <div className="flex space-x-4">
-        <Link
-          href="/"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [h] home
+    <nav className="flex items-center text-sm text-secondary">
+      <div className="flex space-x-6">
+        <Link href="/" className="hover:text-primary transition-colors">
+          <u>h</u>ome
         </Link>
-        <Link
-          href="/blog"
-          prefetch={true}
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [b] blog
+        <Link href="/blog" prefetch={true} className="hover:text-primary transition-colors">
+          <u>b</u>log
         </Link>
-        <Link
-          href="/projects"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          [p] projects
+        <Link href="/projects" className="hover:text-primary transition-colors">
+          <u>p</u>rojects
         </Link>
       </div>
     </nav>

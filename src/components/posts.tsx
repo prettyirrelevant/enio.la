@@ -78,31 +78,22 @@ export function Posts({ posts }: PostsProps) {
   return (
     <>
       {isSearching && (
-        <div className="fixed bottom-4 left-4 right-4 max-w-2xl mx-auto bg-vesper-bg/80 backdrop-blur-sm border border-vesper-border p-2">
-          <div className="flex items-center text-vesper-muted">
-            <span className="text-accent mr-2">/</span>
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-md px-4">
+          <div className="bg-background border border-border p-3">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 bg-transparent outline-none"
+              className="w-full bg-transparent outline-none text-primary placeholder:text-muted"
               autoFocus
-              placeholder="search posts..."
+              placeholder="search..."
               aria-label="Search posts"
-              role="searchbox"
-              aria-expanded={filteredPosts.length > 0}
-              aria-controls="search-results"
-              aria-activedescendant={
-                isSearching && filteredPosts.length > 0
-                  ? `post-${filteredPosts[selectedIndex].slug}`
-                  : undefined
-              }
             />
           </div>
         </div>
       )}
 
-      <div id="search-results" className="space-y-8 sm:space-y-4">
+      <div id="search-results" className="space-y-1">
         {filteredPosts.map((item, index) => (
           <div
             key={item.slug}

@@ -2,14 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #101010;
-  --foreground: #999999;
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: theme('colors.secondary');
+  background: theme('colors.background');
 }
 
 .prose a:not(.anchor) {
@@ -17,23 +12,15 @@ body {
 }
 
 .prose a.anchor {
-  @apply relative no-underline;
-}
-
-.prose a.anchor::before {
-  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'];
-}
-
-.prose a.anchor:hover::before {
-  @apply opacity-100;
+  @apply no-underline;
 }
 
 .prose pre {
-  @apply overflow-x-auto border border-vesper-border bg-vesper-bg my-4 rounded-none;
+  @apply overflow-x-auto border border-border bg-background my-6;
 }
 
 .prose code:not(pre code) {
-  @apply px-1 py-0.5 text-sm border border-vesper-border rounded text-vesper-text;
+  @apply px-1 py-0.5 text-sm border border-border text-primary;
 }
 
 .prose code:not(pre code)::before,

@@ -1,5 +1,4 @@
 import { Posts } from '@/components/posts';
-import { ScrambleText } from '@/components/scramble-text';
 import { getPosts } from '@/lib/blog';
 import type { Metadata } from 'next';
 
@@ -7,47 +6,10 @@ const posts = getPosts();
 
 export default async function BlogPage() {
   return (
-    <main className="animate-fade-in-up relative">
-      <h1 className="text-4xl font-bold mb-8 text-vesper-text">
-        <span className="text-accent mr-2">*</span>
-        <ScrambleText text="blog" />
-      </h1>
-
-      <p className="text-sm text-vesper-muted mb-8">
-        <span className="sm:hidden">
-          press{' '}
-          <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">
-            /
-          </kbd>{' '}
-          to search
-        </span>
-        <span className="hidden sm:inline">
-          press{' '}
-          <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">
-            /
-          </kbd>{' '}
-          to search • use{' '}
-          <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">
-            ctrl / ⌘ j
-          </kbd>{' '}
-          and{' '}
-          <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">
-            ctrl / ⌘ k
-          </kbd>{' '}
-          or{' '}
-          <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">
-            ↑
-          </kbd>{' '}
-          and{' '}
-          <kbd className="px-1 py-0.5 text-xs border border-vesper-border rounded">
-            ↓
-          </kbd>{' '}
-          to navigate
-        </span>
-      </p>
-
+    <div className="animate-fade-in">
+      <h1 className="text-3xl mb-12 text-primary">writing</h1>
       <Posts posts={posts} />
-    </main>
+    </div>
   );
 }
 

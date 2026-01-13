@@ -1,4 +1,3 @@
-import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 export type Item = {
@@ -23,32 +22,27 @@ export function SectionList({
   viewAllText,
 }: SectionListProps) {
   return (
-    <section className="mb-16 animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-vesper-text">
-        <span className="text-accent mr-2">*</span> {title}
-      </h2>
-      <div className="space-y-8">
-        {items.map((item, index) => (
-          <div key={item.title} className="group">
+    <section className="mb-20">
+      <h2 className="text-xl mb-8 text-primary">{title}</h2>
+      <div className="space-y-10">
+        {items.map((item) => (
+          <article key={item.title} className="group">
             <Link href={item.href} target="_blank">
-              <h3 className="text-xl font-semibold mb-1 text-vesper-subtle group-hover:text-accent transition-colors duration-200">
+              <h3 className="text-lg text-primary group-hover:text-accent transition-colors">
                 {item.title}
               </h3>
-              <p className="text-sm text-vesper-muted mb-2">
-                {item.role} {item.period && `(${item.period})`}
+              <p className="text-sm text-muted mt-1">
+                {item.role}
+                {item.period && ` / ${item.period}`}
               </p>
-              <p className="text-vesper-fg">{item.description}</p>
+              <p className="text-secondary mt-2">{item.description}</p>
             </Link>
-          </div>
+          </article>
         ))}
       </div>
       {viewAllHref && (
-        <Link
-          href={viewAllHref}
-          className="inline-flex items-center gap-1 mt-6 text-accent hover:underline group"
-        >
-          {viewAllText}{' '}
-          <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" />
+        <Link href={viewAllHref} className="inline-block mt-8 text-accent hover:underline">
+          {viewAllText}
         </Link>
       )}
     </section>

@@ -55,7 +55,7 @@ export default async function Post({ params }: PageProps) {
   }
 
   return (
-    <section className="animate-fade-in-up">
+    <section className="animate-fade-in">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -77,16 +77,11 @@ export default async function Post({ params }: PageProps) {
         }}
       />
 
-      <h1 className="text-4xl font-bold mb-4 text-vesper-text">
-        <span className="text-accent mr-2">*</span>
-        {post.metadata.title}
-      </h1>
+      <h1 className="text-3xl mb-4 text-primary">{post.metadata.title}</h1>
 
-      <div className="mb-8 flex items-center justify-between text-sm text-vesper-muted">
-        <span>{formatDate(post.metadata.date)}</span>
-      </div>
+      <p className="text-sm text-muted mb-12">{formatDate(post.metadata.date)}</p>
 
-      <article className="prose prose-invert max-w-none prose-headings:text-vesper-text prose-p:text-vesper-fg prose-li:text-vesper-fg prose-a:text-accent hover:prose-a:underline">
+      <article className="prose prose-invert max-w-none prose-headings:text-primary prose-p:text-secondary prose-li:text-secondary prose-a:text-accent hover:prose-a:underline">
         <MDX code={post.code} />
       </article>
     </section>

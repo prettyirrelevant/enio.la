@@ -9,21 +9,18 @@ const links = [
 
 export function LinksSection() {
   return (
-    <section className="animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-vesper-text">
-        <span className="text-accent mr-2">*</span> links
-      </h2>
-      <div className="flex flex-wrap gap-4 text-sm">
+    <footer className="pt-16 border-t border-border">
+      <div className="flex flex-wrap gap-6 text-sm text-muted">
         {links.map((link) => (
           <Link
             key={link.title}
             href={link.href}
-            className="text-vesper-muted hover:text-accent transition-colors duration-200"
+            className="hover:text-primary transition-colors"
           >
             {link.title}
           </Link>
         ))}
       </div>
-    </section>
+    </footer>
   );
 }

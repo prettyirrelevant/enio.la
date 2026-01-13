@@ -61,9 +61,9 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} antialiased min-h-screen font-mono`}
       >
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
           <Navbar />
-          {children}
+          <main className="mt-12">{children}</main>
         </div>
       </body>
     </html>

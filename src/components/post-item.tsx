@@ -10,22 +10,20 @@ type PostItemProps = {
 export function PostItem({ post, isSelected }: PostItemProps) {
   return (
     <div
-      className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 group ${
-        isSelected
-          ? 'bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2 border-l-2 border-l-accent/50'
-          : ''
+      className={`flex justify-between items-baseline py-2 ${
+        isSelected ? 'bg-accent/5' : ''
       }`}
     >
       <Link
         href={`/blog/${post.slug}`}
         prefetch={true}
-        className="text-vesper-subtle hover:text-accent transition-colors duration-200"
+        className="text-primary hover:text-accent transition-colors"
       >
         {post.metadata.title.toLowerCase()}
       </Link>
-      <div className="flex items-center text-sm text-vesper-muted shrink-0">
-        <span>{formatDateShort(post.metadata.date)}</span>
-      </div>
+      <span className="text-sm text-muted shrink-0">
+        {formatDateShort(post.metadata.date)}
+      </span>
     </div>
   );
 }
