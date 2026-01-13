@@ -22,44 +22,29 @@ function CopyButton({ getCode }: { getCode: () => string }) {
   return (
     <button
       onClick={handleCopy}
-      className="absolute top-2 right-2 p-2 rounded-md bg-vesper-border hover:bg-vesper-muted transition-colors"
-      title={copied ? 'Copied!' : 'Copy code'}
-      aria-label={copied ? 'Code copied' : 'Copy code to clipboard'}
+      className={`absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity ${copied ? 'text-accent' : 'text-muted hover:text-secondary'}`}
+      aria-label={copied ? 'Copied' : 'Copy'}
     >
-      {copied ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-accent"
-        >
-          <path d="M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-          <path d="M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-          <path d="M11 14l2 2l4 -4" />
-        </svg>
-      ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-vesper-muted"
-        >
-          <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-          <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
-        </svg>
-      )}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {copied ? (
+          <path d="M5 12l5 5l10 -10" />
+        ) : (
+          <>
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </>
+        )}
+      </svg>
     </button>
   );
 }
@@ -113,8 +98,8 @@ function Pre({
   };
 
   return (
-    <div className="relative">
-      <pre ref={preRef} {...props}>
+    <div className="relative group my-6 rounded-lg overflow-hidden bg-[#0a0a0a]">
+      <pre ref={preRef} {...props} className="!my-0 !border-0 !bg-transparent">
         {children}
       </pre>
       <CopyButton getCode={getCode} />

@@ -16,7 +16,7 @@ body {
 }
 
 .prose pre {
-  @apply overflow-x-auto border border-border bg-background my-6;
+  @apply overflow-x-auto;
 }
 
 .prose code:not(pre code) {
