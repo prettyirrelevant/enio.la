@@ -26,7 +26,21 @@ export async function compileMDX(content: string): Promise<string> {
   const result = await compile(content, {
     outputFormat: 'function-body',
     development: false,
-    rehypePlugins: [[rehypeShiki, { theme: 'vesper' }]],
+    rehypePlugins: [
+      [
+        rehypeShiki,
+        {
+          theme: 'vesper',
+          transformers: [
+            {
+              line(node: any, line: number) {
+                node.properties['data-line'] = line;
+              },
+            },
+          ],
+        },
+      ],
+    ],
   });
   return String(result);
 }

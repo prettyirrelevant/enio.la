@@ -29,7 +29,18 @@ body {
 }
 
 .prose pre code {
-  @apply p-4 block bg-transparent;
+  @apply p-6 block bg-transparent;
   border: initial;
-  line-height: 1.6;
+  line-height: 1.8;
+  counter-reset: line;
+}
+
+.prose pre code [data-line] {
+  @apply inline-block w-full;
+}
+
+.prose pre code [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply inline-block w-8 mr-6 text-right text-muted;
 }

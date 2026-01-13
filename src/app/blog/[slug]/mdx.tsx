@@ -98,8 +98,8 @@ function Pre({
   };
 
   return (
-    <div className="relative group my-6 rounded-lg overflow-hidden bg-[#0a0a0a]">
-      <pre ref={preRef} {...props} className="!my-0 !border-0 !bg-transparent">
+    <div className="relative group my-6 rounded-2xl overflow-hidden bg-[#0c0c0c] border border-white/10">
+      <pre ref={preRef} {...props} className="!my-0 !border-0 !bg-transparent !rounded-none">
         {children}
       </pre>
       <CopyButton getCode={getCode} />
