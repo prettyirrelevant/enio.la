@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://enio.la'),
   openGraph: {
     title: 'Isaac Adewumi',
-    description: 'software engineer in lagos, nigeria',
+    description: 'Software engineer in Lagos, Nigeria',
     siteName: 'Isaac Adewumi',
     url: 'https://enio.la',
     type: 'website',
