@@ -1,9 +1,34 @@
-import type { NextConfig } from 'next';
+import withMDX from '@next/mdx'
+import { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
+export default withMDX()({
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  turbopack: {},
+  redirects: async () => [
+    {
+      source: '/posts/:slug',
+      destination: '/writings/:slug',
+      permanent: false,
+    },
+    {
+      source: '/blog/:slug',
+      destination: '/writings/:slug',
+      permanent: false,
+    },
+    {
+      source: '/blog',
+      destination: '/writings',
+      permanent: false,
+    },
+  ],
   experimental: {
-    reactCompiler: true,
+    mdxRs: {
+      mdxType: 'gfm',
+    },
+    turbopackFileSystemCacheForDev: true,
+    turbopackFileSystemCacheForBuild: true,
   },
+  transpilePackages: ['shiki'],
   images: {
     remotePatterns: [
       {
@@ -11,7 +36,7 @@ const nextConfig: NextConfig = {
         hostname: 'enio.la',
       },
     ],
+    contentDispositionType: 'inline',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-};
-
-export default nextConfig;
+} satisfies NextConfig)
