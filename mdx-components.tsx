@@ -18,7 +18,7 @@ export const components: Record<
 > = {
   h1: (props) => (
     <h1
-      className='font-semibold mb-7 text-rurikon-600 text-balance'
+      className='font-semibold mb-7 text-umber-600 text-balance'
       {...props}
     />
   ),
@@ -37,12 +37,12 @@ export const components: Record<
     return (
       <h2
         id={id}
-        className='group relative font-semibold mt-14 mb-7 text-rurikon-600 text-balance scroll-mt-6 sm:scroll-mt-14'
+        className='group relative font-semibold mt-14 mb-7 text-umber-600 text-balance scroll-mt-6 sm:scroll-mt-14'
         {...props}
       >
         <a
           href={`#${id}`}
-          className='absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none text-rurikon-200 hover:text-rurikon-500 transition-all delay-0 duration-500 group-target:blur-none group-target:opacity-100 group-hover:delay-300 select-none'
+          className='absolute md:w-14 sm:w-10 mobile:w-6 w-6 -translate-x-[calc(100%-2px)] text-center opacity-0 blur-xs group-hover:opacity-100 group-hover:blur-none text-umber-200 hover:text-umber-500 transition-all delay-0 duration-500 group-target:blur-none group-target:opacity-100 group-hover:delay-300 select-none'
           aria-label='Link to this section'
         >
           #
@@ -53,26 +53,26 @@ export const components: Record<
   },
   h3: (props) => (
     <h3
-      className='font-semibold mt-14 mb-7 text-rurikon-600 text-balance'
+      className='font-semibold mt-14 mb-7 text-umber-600 text-balance'
       {...props}
     />
   ),
   ul: (props) => (
     <ul
-      className='mt-7 list-disc list-outside marker:text-rurikon-200 pl-5'
+      className='mt-7 list-disc list-outside marker:text-umber-200 pl-5'
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className='mt-7 list-decimal list-outside marker:text-rurikon-200 pl-5'
+      className='mt-7 list-decimal list-outside marker:text-umber-200 pl-5'
       {...props}
     />
   ),
   li: (props) => <li className='pl-1.5' {...props} />,
   a: ({ href, ...props }) => {
     const className =
-      'break-words decoration-from-font underline underline-offset-2 text-[var(--color-accent)] decoration-[var(--color-accent)]/40 hover:decoration-[var(--color-accent)] focus-visible:outline focus-visible:outline-rurikon-400 focus-visible:rounded-xs focus-visible:outline-offset-1 focus-visible:outline-dotted'
+      'break-words decoration-from-font underline underline-offset-2 text-[var(--color-accent)] decoration-[var(--color-accent)]/40 hover:decoration-[var(--color-accent)] focus-visible:outline focus-visible:outline-umber-400 focus-visible:rounded-xs focus-visible:outline-offset-1 focus-visible:outline-dotted'
 
     if (href?.startsWith('#')) {
       return (
@@ -99,7 +99,7 @@ export const components: Record<
   p: (props) => <p className='mt-7' {...props} />,
   blockquote: (props) => (
     <blockquote
-      className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-rurikon-400'
+      className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-umber-400'
       {...props}
     />
   ),
@@ -150,7 +150,7 @@ export const components: Record<
 
     return <code className='inline' {...props} />
   },
-  hr: (props) => <hr className='my-14 w-24 border-rurikon-border' {...props} />,
+  hr: (props) => <hr className='my-14 w-24 border-umber-border' {...props} />,
   BlockSideTitle,
 }
 

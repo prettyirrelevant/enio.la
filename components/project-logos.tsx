@@ -5,11 +5,9 @@ function ProjectName({ title }: { title: string }) {
       title={title}
     >
       <span
-        className='text-[16px] tracking-[-0.005em] leading-none'
+        className='text-[16px] tracking-[-0.005em] leading-none font-heading'
         style={{
-          fontVariationSettings: '"wght" 550, "opsz" 20',
-          fontFeatureSettings:
-            '"dlig" 1, "cv01", "cv03", "cv04", "cv05", "cv09", "calt", "ss03", "cpsp", "liga", "ordn"',
+          fontVariationSettings: '"wght" 600, "opsz" 32',
         }}
       >
         {title}
