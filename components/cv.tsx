@@ -162,10 +162,10 @@ export function CV() {
       <Section title='Skills' className='print:hidden'>
         <div className='flex flex-wrap gap-1.5'>
           {[
-            'Python', 'Rust', 'TypeScript', 'Go', 'Solidity', 'C++',
+            'Python', 'Rust', 'TypeScript', 'Go',
             'Django', 'Flask', 'Next.js', 'React', 'React Native',
-            'PostgreSQL', 'SQLite', 'Docker', 'Git',
-            'EVM', 'Solana', 'Algorand', 'DeFi', 'Smart Contracts',
+            'SQL', 'Docker', 'Git',
+            'Solidity', 'Vyper', 'PyTeal',
           ].map((skill) => (
             <span key={skill} className='text-xs px-2 py-0.5 rounded-sm bg-umber-100 text-umber-400 print:text-umber-600 print:border print:border-umber-200 print:bg-transparent'>
               {skill}
