@@ -203,7 +203,7 @@ export function Timeline() {
 
       <Entry
         period='Dec 2001'
-        title='Born'
+        title='Spawned in Lagos'
       />
     </div>
   )
