@@ -114,12 +114,6 @@ export function CV() {
           <li className='pl-1.5'>Contributed to an API-first platform enabling businesses across Africa to embed and distribute insurance products</li>
         </Job>
 
-        <Job title='Lead Developer & Cofounder' company='Flashpay' location='Remote' period='May 2022 - Jan 2024'>
-          <li className='pl-1.5'>Built a payments application on the Algorand blockchain</li>
-          <li className='pl-1.5'>Secured an Algorand Foundation grant</li>
-          <li className='pl-1.5'>Led technical architecture and development</li>
-        </Job>
-
         <Job title='Python Backend Engineer' company='Rotki Solutions GmbH' location='Remote, Berlin' period='Apr 2022 - Apr 2023'>
           <li className='pl-1.5'>Replaced Uniswap V3 subgraph dependency with a purely on-chain approach</li>
           <li className='pl-1.5'>Reduced Electron application memory usage by ~30% through revamped asset management endpoints</li>
