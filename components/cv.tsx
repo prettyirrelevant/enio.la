@@ -1,8 +1,21 @@
+'use client'
+
+function PrintButton() {
+  return (
+    <button
+      onClick={() => window.print()}
+      className='print:hidden text-xs text-umber-300 hover:text-umber-500 transition-colors cursor-pointer'
+    >
+      print / save as pdf
+    </button>
+  )
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className='mt-10 first:mt-0'>
       <h2
-        className='text-xs uppercase tracking-widest text-umber-300 mb-4 print:text-[10px]'
+        className='text-xs uppercase tracking-widest text-umber-300 print:text-umber-600 mb-4 print:text-[10px]'
         style={{ fontFamily: 'var(--sans)' }}
       >
         {title}
@@ -30,11 +43,11 @@ function Job({
       <div className='flex flex-wrap items-baseline justify-between gap-x-3'>
         <p className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>
           {title}
-          <span className='font-normal text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {company}</span>
+          <span className='font-normal text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {company}</span>
         </p>
-        <p className='text-xs text-umber-300 whitespace-nowrap'>{period}</p>
+        <p className='text-xs text-umber-300 print:text-umber-600 whitespace-nowrap'>{period}</p>
       </div>
-      {location && <p className='text-xs text-umber-300'>{location}</p>}
+      {location && <p className='text-xs text-umber-300 print:text-umber-600'>{location}</p>}
       {children && <ul className='mt-2 list-disc list-outside marker:text-umber-200 pl-5 text-umber-500'>{children}</ul>}
     </div>
   )
@@ -44,8 +57,8 @@ function Hackathon({ project, event, result }: { project: string; event: string;
   return (
     <li className='pl-1.5'>
       <span className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{project}</span>
-      <span className='text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {event}</span>
-      <span className='text-umber-300'> : {result}</span>
+      <span className='text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {event}</span>
+      <span className='text-umber-300 print:text-umber-600'> : {result}</span>
     </li>
   )
 }
@@ -54,7 +67,7 @@ function Project({ name, description }: { name: string; description: string }) {
   return (
     <li className='pl-1.5'>
       <span className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{name}</span>
-      <span className='text-umber-400'> : {description}</span>
+      <span className='text-umber-400 print:text-umber-600'> : {description}</span>
     </li>
   )
 }
@@ -63,24 +76,27 @@ export function CV() {
   return (
     <div className='print:text-[13px] print:leading-[1.4]'>
       <header className='mb-4'>
-        <h1
-          className='font-semibold text-umber-600'
-          style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}
-        >
-          Isaac Adewumi
-        </h1>
-        <p className='text-umber-400 mt-1 text-xs'>
+        <div className='flex items-baseline justify-between'>
+          <h1
+            className='font-semibold text-umber-600'
+            style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}
+          >
+            Isaac Adewumi
+          </h1>
+          <PrintButton />
+        </div>
+        <p className='text-umber-400 print:text-umber-600 mt-1 text-xs'>
           Lagos, Nigeria
           <span className='text-umber-200 mx-1.5'>|</span>
-          hi@enio.la
+          <a href='mailto:hi@enio.la' className='hover:underline'>hi@enio.la</a>
           <span className='text-umber-200 mx-1.5'>|</span>
-          github.com/prettyirrelevant
+          <a href='https://github.com/prettyirrelevant' target='_blank' rel='noopener noreferrer' className='hover:underline'>github.com/prettyirrelevant</a>
           <span className='text-umber-200 mx-1.5'>|</span>
-          linkedin.com/in/isaac-adewumi
+          <a href='https://www.linkedin.com/in/isaac-adewumi' target='_blank' rel='noopener noreferrer' className='hover:underline'>in/isaac-adewumi</a>
         </p>
       </header>
 
-      <p className='text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}>
+      <p className='text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}>
         Backend-focused software engineer with experience across blockchain, fintech, and open source. I've spent the bulk of my career at Rotki, building the best open-source portfolio tracker and transaction decoding tool out there. Outside of that, I've cofounded a payments product, won several global hackathons, and shipped a range of side projects in Rust, Go, and TypeScript.
       </p>
 
@@ -157,7 +173,7 @@ export function CV() {
             'PostgreSQL', 'SQLite', 'Docker', 'Git',
             'EVM', 'Solana', 'Algorand', 'DeFi', 'Smart Contracts',
           ].map((skill) => (
-            <span key={skill} className='text-xs px-2 py-0.5 rounded-sm bg-umber-100 text-umber-400 print:border print:border-umber-200 print:bg-transparent'>
+            <span key={skill} className='text-xs px-2 py-0.5 rounded-sm bg-umber-100 text-umber-400 print:text-umber-600 print:border print:border-umber-200 print:bg-transparent'>
               {skill}
             </span>
           ))}
@@ -168,9 +184,9 @@ export function CV() {
         <div className='flex flex-wrap items-baseline justify-between gap-x-3'>
           <p className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>
             B.Sc. Electrical & Electronics Engineering
-            <span className='font-normal text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at Obafemi Awolowo University</span>
+            <span className='font-normal text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at Obafemi Awolowo University</span>
           </p>
-          <p className='text-xs text-umber-300'>2018 - 2024</p>
+          <p className='text-xs text-umber-300 print:text-umber-600'>2018 - 2024</p>
         </div>
       </Section>
     </div>

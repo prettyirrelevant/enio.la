@@ -299,3 +299,16 @@ article {
     filter: blur(0);
   }
 }
+
+@media print {
+  nav {
+    display: none;
+  }
+  body {
+    background-color: white;
+    padding: 0;
+  }
+  .content-fade-out {
+    display: none;
+  }
+}
