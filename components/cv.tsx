@@ -53,20 +53,20 @@ function Job({
   )
 }
 
-function Hackathon({ project, event, result }: { project: string; event: string; result: string }) {
+function Hackathon({ project, event, eventHref, result }: { project: string; event: string; eventHref: string; result: string }) {
   return (
     <li className='pl-1.5'>
       <span className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{project}</span>
-      <span className='text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {event}</span>
+      <span className='text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at <a href={eventHref} target='_blank' rel='noopener noreferrer' className='text-[var(--color-accent)] hover:underline'>{event}</a></span>
       <span className='text-umber-300 print:text-umber-600'> : {result}</span>
     </li>
   )
 }
 
-function Project({ name, description }: { name: string; description: string }) {
+function Project({ name, href, description }: { name: string; href: string; description: string }) {
   return (
     <li className='pl-1.5'>
-      <span className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{name}</span>
+      <a href={href} target='_blank' rel='noopener noreferrer' className='font-semibold text-[var(--color-accent)] hover:underline' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{name}</a>
       <span className='text-umber-400 print:text-umber-600'> : {description}</span>
     </li>
   )
@@ -88,11 +88,11 @@ export function CV() {
         <p className='text-umber-400 print:text-umber-600 mt-1 text-xs'>
           Lagos, Nigeria
           <span className='text-umber-200 mx-1.5'>|</span>
-          <a href='mailto:hi@enio.la' className='hover:underline'>hi@enio.la</a>
+          <a href='mailto:hi@enio.la' className='text-[var(--color-accent)] hover:underline'>hi@enio.la</a>
           <span className='text-umber-200 mx-1.5'>|</span>
-          <a href='https://github.com/prettyirrelevant' target='_blank' rel='noopener noreferrer' className='hover:underline'>github.com/prettyirrelevant</a>
+          <a href='https://github.com/prettyirrelevant' target='_blank' rel='noopener noreferrer' className='text-[var(--color-accent)] hover:underline'>github.com/prettyirrelevant</a>
           <span className='text-umber-200 mx-1.5'>|</span>
-          <a href='https://www.linkedin.com/in/isaac-adewumi' target='_blank' rel='noopener noreferrer' className='hover:underline'>in/isaac-adewumi</a>
+          <a href='https://www.linkedin.com/in/isaac-adewumi' target='_blank' rel='noopener noreferrer' className='text-[var(--color-accent)] hover:underline'>in/isaac-adewumi</a>
         </p>
       </header>
 
@@ -147,21 +147,21 @@ export function CV() {
 
       <Section title='Hackathon Wins'>
         <ul className='list-disc list-outside marker:text-umber-200 pl-5'>
-          <Hackathon project='BridgeBloc' event='DevX EMEA' result='won $9,000 (Circle + Polygon)' />
-          <Hackathon project='Brazen' event="Anchor Embedded Finance Hackathon" result='1st place, won ₦1,000,000' />
-          <Hackathon project='Optimart' event='XRPL Hackathon' result='winner' />
-          <Hackathon project='ContractWatch' event='Scroll v0rtex Hackathon' result='prize winner' />
-          <Hackathon project='Wrapped Naira' event='Scroll v0rtex Hackathon' result='prize winner' />
+          <Hackathon project='BridgeBloc' event='DevX EMEA' eventHref='https://dorahacks.io/hackathon/devxemea/results' result='won $9,000 (Circle + Polygon)' />
+          <Hackathon project='Brazen' event="Anchor Embedded Finance Hackathon" eventHref='https://getanchor.co/blog/open.html?slug=anchor-embedded-finance-hackathon-2023-a-collision-of-creativity-and-innovation&id=65e9a0a473829fd08cd977a1' result='1st place, won ₦1,000,000' />
+          <Hackathon project='Optimart' event='XRPL Hackathon' eventHref='https://dorahacks.io/hackathon/xrpl-hackathon/results' result='winner' />
+          <Hackathon project='ContractWatch' event='Scroll v0rtex Hackathon' eventHref='https://dorahacks.io/hackathon/v0rtex-01/detail' result='prize winner' />
+          <Hackathon project='Wrapped Naira' event='Scroll v0rtex Hackathon' eventHref='https://dorahacks.io/hackathon/v0rtex-01/detail' result='prize winner' />
         </ul>
       </Section>
 
       <Section title='Projects'>
         <ul className='list-disc list-outside marker:text-umber-200 pl-5'>
-          <Project name='Kizami' description='Rust service for block-by-timestamp lookups across 30+ EVM chains' />
-          <Project name='Decodify' description='Chrome extension for human-readable Etherscan transaction decoding' />
-          <Project name='Wakaru' description='Client-side bank statement analyzer with natural language queries' />
-          <Project name='Guessx' description='Real-time multiplayer guessing game for 2-20 players' />
-          <Project name='Neuron' description='BLE-based attendance system using ESP32 (final year project)' />
+          <Project name='Kizami' href='https://github.com/prettyirrelevant/kizami' description='Rust service for block-by-timestamp lookups across 30+ EVM chains' />
+          <Project name='Decodify' href='https://github.com/prettyirrelevant/decodify' description='Chrome extension for human-readable Etherscan transaction decoding' />
+          <Project name='Wakaru' href='https://github.com/prettyirrelevant/wakaru' description='Client-side bank statement analyzer with natural language queries' />
+          <Project name='Guessx' href='https://github.com/prettyirrelevant/guessx' description='Real-time multiplayer guessing game for 2-20 players' />
+          <Project name='Neuron' href='https://github.com/prettyirrelevant/final-year-project' description='BLE-based attendance system using ESP32 (final year project)' />
         </ul>
       </Section>
 
