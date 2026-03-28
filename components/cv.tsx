@@ -1,0 +1,178 @@
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className='mt-10 first:mt-0'>
+      <h2
+        className='text-xs uppercase tracking-widest text-umber-300 mb-4 print:text-[10px]'
+        style={{ fontFamily: 'var(--sans)' }}
+      >
+        {title}
+      </h2>
+      {children}
+    </section>
+  )
+}
+
+function Job({
+  title,
+  company,
+  location,
+  period,
+  children,
+}: {
+  title: string
+  company: string
+  location?: string
+  period: string
+  children?: React.ReactNode
+}) {
+  return (
+    <div className='mb-6 last:mb-0'>
+      <div className='flex flex-wrap items-baseline justify-between gap-x-3'>
+        <p className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>
+          {title}
+          <span className='font-normal text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {company}</span>
+        </p>
+        <p className='text-xs text-umber-300 whitespace-nowrap'>{period}</p>
+      </div>
+      {location && <p className='text-xs text-umber-300'>{location}</p>}
+      {children && <ul className='mt-2 list-disc list-outside marker:text-umber-200 pl-5 text-umber-500'>{children}</ul>}
+    </div>
+  )
+}
+
+function Hackathon({ project, event, result }: { project: string; event: string; result: string }) {
+  return (
+    <li className='pl-1.5'>
+      <span className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{project}</span>
+      <span className='text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at {event}</span>
+      <span className='text-umber-300'> : {result}</span>
+    </li>
+  )
+}
+
+function Project({ name, description }: { name: string; description: string }) {
+  return (
+    <li className='pl-1.5'>
+      <span className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>{name}</span>
+      <span className='text-umber-400'> : {description}</span>
+    </li>
+  )
+}
+
+export function CV() {
+  return (
+    <div className='print:text-[13px] print:leading-[1.4]'>
+      <header className='mb-4'>
+        <h1
+          className='font-semibold text-umber-600'
+          style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}
+        >
+          Isaac Adewumi
+        </h1>
+        <p className='text-umber-400 mt-1 text-xs'>
+          Lagos, Nigeria
+          <span className='text-umber-200 mx-1.5'>|</span>
+          hi@enio.la
+          <span className='text-umber-200 mx-1.5'>|</span>
+          github.com/prettyirrelevant
+          <span className='text-umber-200 mx-1.5'>|</span>
+          linkedin.com/in/isaac-adewumi
+        </p>
+      </header>
+
+      <p className='text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}>
+        Backend-focused software engineer with experience across blockchain, fintech, and open source. I've spent the bulk of my career at Rotki, building the best open-source portfolio tracker and transaction decoding tool out there. Outside of that, I've cofounded a payments product, won several global hackathons, and shipped a range of side projects in Rust, Go, and TypeScript.
+      </p>
+
+      <Section title='Experience'>
+        <Job title='Python Backend Engineer' company='Rotki Solutions GmbH' location='Remote, Berlin' period='Oct 2024 - Mar 2026'>
+          <li className='pl-1.5'>Added Solana as a fully supported chain with spam token filtering and transaction decoding</li>
+          <li className='pl-1.5'>Built a historical balance tracking system from scratch with archive node queries and cache invalidation</li>
+          <li className='pl-1.5'>Refactored hardcoded USD value handling into user-selected currency support across 10+ endpoints</li>
+          <li className='pl-1.5'>Added protocol support for Balancer v1/v2, Aura Finance, Beefy, Yearn, StakeDAO, and others</li>
+          <li className='pl-1.5'>Added Coinbase ED25519 API key format and Binance Convert trade support</li>
+        </Job>
+
+        <Job title='Software Engineer' company='Unyte' location='Nigeria' period='Jul 2024 - Oct 2024'>
+          <li className='pl-1.5'>Built insurance policy management features and provider onboarding flows</li>
+          <li className='pl-1.5'>Contributed to an API-first platform enabling businesses across Africa to embed and distribute insurance products</li>
+        </Job>
+
+        <Job title='Lead Developer & Cofounder' company='Flashpay' location='Remote' period='May 2022 - Jan 2024'>
+          <li className='pl-1.5'>Built a payments application on the Algorand blockchain</li>
+          <li className='pl-1.5'>Secured an Algorand Foundation grant</li>
+          <li className='pl-1.5'>Led technical architecture and development</li>
+        </Job>
+
+        <Job title='Python Backend Engineer' company='Rotki Solutions GmbH' location='Remote, Berlin' period='Apr 2022 - Apr 2023'>
+          <li className='pl-1.5'>Replaced Uniswap V3 subgraph dependency with a purely on-chain approach</li>
+          <li className='pl-1.5'>Reduced Electron application memory usage by ~30% through revamped asset management endpoints</li>
+          <li className='pl-1.5'>Added support for Average Cost Basis and HIFO accounting methods</li>
+          <li className='pl-1.5'>Integrated transaction decoding for Uniswap V2/V3, Sushiswap, Curve, and MakerDAO</li>
+          <li className='pl-1.5'>Added taproot BTC address support, per-user notes, and spam NFT filtering</li>
+        </Job>
+
+        <Job title='Full Stack Engineer' company='DeCHO' location='Remote, Lagos' period='Jan 2022 - Apr 2022'>
+          <li className='pl-1.5'>Built a Swift native module to integrate the Algorand SDK in a React Native app</li>
+          <li className='pl-1.5'>Developed API endpoints with Django REST Framework</li>
+          <li className='pl-1.5'>Implemented Web3 wallet integrations for the web version</li>
+        </Job>
+
+        <Job title='Software Engineer' company='Saber Creative Agency' location='Remote' period='Oct 2021 - Jan 2022'>
+          <li className='pl-1.5'>Built endpoints and UI components for a hospitality management application in Django</li>
+          <li className='pl-1.5'>Set up CI workflows and improved the testing suite</li>
+        </Job>
+
+        <Job title='Django Developer Intern' company='Mul-T-Lock Nigeria' location='Hybrid, Lagos' period='Jan 2021 - Mar 2021'>
+          <li className='pl-1.5'>Built a product landing page in Django</li>
+          <li className='pl-1.5'>Worked on an authentication system for IoT device integration using Django Channels</li>
+        </Job>
+      </Section>
+
+      <Section title='Hackathon Wins'>
+        <ul className='list-disc list-outside marker:text-umber-200 pl-5'>
+          <Hackathon project='BridgeBloc' event='DevX EMEA' result='won $9,000 (Circle + Polygon)' />
+          <Hackathon project='Brazen' event="Anchor Embedded Finance Hackathon" result='1st place, won ₦1,000,000' />
+          <Hackathon project='Optimart' event='XRPL Hackathon' result='winner' />
+          <Hackathon project='ContractWatch' event='Scroll v0rtex Hackathon' result='prize winner' />
+          <Hackathon project='Wrapped Naira' event='Scroll v0rtex Hackathon' result='prize winner' />
+        </ul>
+      </Section>
+
+      <Section title='Projects'>
+        <ul className='list-disc list-outside marker:text-umber-200 pl-5'>
+          <Project name='Kizami' description='Rust service for block-by-timestamp lookups across 30+ EVM chains' />
+          <Project name='Decodify' description='Chrome extension for human-readable Etherscan transaction decoding' />
+          <Project name='Wakaru' description='Client-side bank statement analyzer with natural language queries' />
+          <Project name='Guessx' description='Real-time multiplayer guessing game for 2-20 players' />
+          <Project name='Neuron' description='BLE-based attendance system using ESP32 (final year project)' />
+        </ul>
+      </Section>
+
+      <Section title='Skills'>
+        <div className='flex flex-wrap gap-1.5'>
+          {[
+            'Python', 'Rust', 'TypeScript', 'Go', 'Solidity', 'C++',
+            'Django', 'Flask', 'Next.js', 'React', 'React Native',
+            'PostgreSQL', 'SQLite', 'Docker', 'Git',
+            'EVM', 'Solana', 'Algorand', 'DeFi', 'Smart Contracts',
+          ].map((skill) => (
+            <span key={skill} className='text-xs px-2 py-0.5 rounded-sm bg-umber-100 text-umber-400 print:border print:border-umber-200 print:bg-transparent'>
+              {skill}
+            </span>
+          ))}
+        </div>
+      </Section>
+
+      <Section title='Education'>
+        <div className='flex flex-wrap items-baseline justify-between gap-x-3'>
+          <p className='font-semibold text-umber-600' style={{ fontFamily: 'var(--heading)', fontVariationSettings: '"wght" 600, "opsz" 32' }}>
+            B.Sc. Electrical & Electronics Engineering
+            <span className='font-normal text-umber-400' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}> at Obafemi Awolowo University</span>
+          </p>
+          <p className='text-xs text-umber-300'>2018 - 2024</p>
+        </div>
+      </Section>
+    </div>
+  )
+}

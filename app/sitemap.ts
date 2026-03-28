@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
 
-  const routes = ['', '/timeline', '/writings', '/projects'].map((route) => ({
+  const routes = ['', '/timeline', '/writings', '/projects', '/cv'].map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
