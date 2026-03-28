@@ -11,9 +11,9 @@ function PrintButton() {
   )
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, className }: { title: string; children: React.ReactNode; className?: string }) {
   return (
-    <section className='mt-10 first:mt-0'>
+    <section className={`mt-10 first:mt-0 ${className || ''}`}>
       <h2
         className='text-xs uppercase tracking-widest text-umber-300 print:text-umber-600 mb-4 print:text-[10px]'
         style={{ fontFamily: 'var(--sans)' }}
@@ -165,7 +165,7 @@ export function CV() {
         </ul>
       </Section>
 
-      <Section title='Skills'>
+      <Section title='Skills' className='print:hidden'>
         <div className='flex flex-wrap gap-1.5'>
           {[
             'Python', 'Rust', 'TypeScript', 'Go', 'Solidity', 'C++',
