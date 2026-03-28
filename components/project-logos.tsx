@@ -39,3 +39,19 @@ export function Decodify() {
 export function Waakye() {
   return <ProjectName title='Waakye' />
 }
+
+export function Guessx() {
+  return <ProjectName title='Guessx' />
+}
+
+export function Knot() {
+  return <ProjectName title='Knot' />
+}
+
+export function Kizami() {
+  return <ProjectName title='Kizami' />
+}
+
+export function Wakaru() {
+  return <ProjectName title='Wakaru' />
+}

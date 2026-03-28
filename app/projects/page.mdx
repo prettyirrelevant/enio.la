@@ -2,32 +2,69 @@ export const metadata = {
   title: 'Projects',
 }
 
-import { Neuron, WrappedNaira, Gistrunner, Bridgebloc, Decodify, Waakye } from '@/components/project-logos'
+import { Neuron, WrappedNaira, Gistrunner, Bridgebloc, Decodify, Waakye, Guessx, Knot, Kizami, Wakaru } from '@/components/project-logos'
+import { TechTags } from '@/components/tech-tags'
 
 # Projects
 
 Some things I've built over the years.
 
-## [<Neuron/>](https://github.com/prettyirrelevant/final-year-project 'Neuron')
+## [<Guessx/>](https://github.com/prettyirrelevant/guessx 'Guessx')
 
-My undergraduate final year project: a student attendance system using Bluetooth Low Energy with an ESP32 microcontroller. The system includes a mobile app, an authentication server, and an IoT component that handles the Bluetooth communication.
+A real-time multiplayer guessing game for 2-20 players. Three modes: identify songs from audio previews, landmarks from photos, or actors from headshots. Points awarded by speed with streak bonuses.
 
-## [<WrappedNaira/>](https://github.com/prettyirrelevant/wrapped-naira 'Wrapped Naira')
+<TechTags tags={['TypeScript', 'Next.js', 'Convex', 'Tailwind CSS']} />
 
-A proof-of-concept fiat-to-crypto ramp that lets users convert Naira into a stablecoin ERC-20 token. It features a P2P exchange mechanism for seamless on/off-ramping between fiat and crypto.
+## [<Knot/>](https://github.com/prettyirrelevant/knot 'Knot')
 
-## [<Gistrunner/>](https://github.com/prettyirrelevant/gistrunner 'Gistrunner')
+A real-time 1v1 tic-tac-toe game.
 
-A sandbox environment for executing code snippets directly from GitHub Gists, with support for multiple languages and isolated execution environments.
+<TechTags tags={['TypeScript', 'Next.js', 'Convex', 'Zustand']} />
+
+## [<Kizami/>](https://github.com/prettyirrelevant/kizami 'Kizami')
+
+A Rust service for block-by-timestamp lookups across 30+ EVM chains, with reorg-safe ingestion and in-memory caching.
+
+<TechTags tags={['Rust', 'Fjall']} />
 
 ## [<Bridgebloc/>](https://github.com/prettyirrelevant/bridgebloc 'Bridgebloc')
 
-A token bridge for transferring assets across EVM-compatible chains. Built during a hackathon to explore cross-chain interoperability patterns.
+A cross-chain USDC bridge using Circle CCTP and Polygon LxLy. Built the blockchain indexer, integrated Circle's APIs for cross-chain swaps. Won $9,000 at the DevX EMEA hackathon out of 300+ submissions.
+
+<TechTags tags={['Python', 'Django', 'Solidity', 'Circle CCTP']} />
+
+## [<Wakaru/>](https://github.com/prettyirrelevant/wakaru 'Wakaru')
+
+A client-side bank statement analyzer with visual analytics and natural language queries. No data leaves the browser.
+
+<TechTags tags={['TypeScript', 'Next.js', 'Tailwind CSS']} />
 
 ## [<Decodify/>](https://github.com/prettyirrelevant/decodify 'Decodify')
 
-A browser extension that decodes Etherscan transactions into a human-readable format using Rotki's transaction decoder, making it easier to understand what on-chain transactions actually do.
+A browser extension that decodes Etherscan transactions into a human-readable format using Rotki's transaction decoder.
+
+<TechTags tags={['TypeScript', 'Chrome Extension']} />
+
+## [<WrappedNaira/>](https://github.com/prettyirrelevant/wrapped-naira 'Wrapped Naira')
+
+A proof-of-concept fiat-to-crypto ramp with a P2P exchange mechanism for on/off-ramping between Naira and an ERC-20 stablecoin. Won a prize at Scroll's v0rtex hackathon and was [highlighted by Scroll](https://x.com/Scroll_ZKP/status/1788017634862370925).
+
+<TechTags tags={['Python', 'Django', 'Solidity']} />
+
+## [<Neuron/>](https://github.com/prettyirrelevant/final-year-project 'Neuron')
+
+My undergraduate final year project: a student attendance system using Bluetooth Low Energy with an ESP32 microcontroller, a mobile app, and an authentication server.
+
+<TechTags tags={['C++', 'ESP32', 'React Native', 'TypeScript', 'Python', 'Django']} />
 
 ## [<Waakye/>](https://github.com/prettyirrelevant/waakye 'Waakye')
 
-A playlist converter that moves your music between Spotify, YouTube Music, and Deezer, handling track matching across platforms and preserving playlist metadata.
+A playlist converter that moves your music between Spotify, YouTube Music, and Deezer, handling track matching and preserving playlist metadata.
+
+<TechTags tags={['Python', 'Django', 'React']} />
+
+## [<Gistrunner/>](https://github.com/prettyirrelevant/gistrunner 'Gistrunner')
+
+A sandbox environment for executing code snippets directly from GitHub Gists, with support for multiple languages and isolated execution.
+
+<TechTags tags={['Go', 'Docker', 'Next.js']} />

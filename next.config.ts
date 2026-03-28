@@ -20,6 +20,11 @@ export default withMDX()({
       destination: '/writings',
       permanent: false,
     },
+    {
+      source: '/work',
+      destination: '/timeline',
+      permanent: true,
+    },
   ],
   experimental: {
     mdxRs: {
