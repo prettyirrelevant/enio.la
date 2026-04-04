@@ -116,35 +116,35 @@ export function Timeline() {
           <Hackathon
             title='BridgeBloc'
             href='https://github.com/prettyirrelevant/bridgebloc'
-            result='won $9,000 (Circle + Polygon), 300+ submissions'
+            result='won a prize'
             event='DevX EMEA'
             eventHref='https://dorahacks.io/hackathon/devxemea/results'
           />
           <Hackathon
             title='Brazen'
             href='https://github.com/prettyirrelevant/brazen'
-            result='1st place, won &#8358;1,000,000'
+            result='1st place'
             event="Anchor's Embedded Finance Hackathon"
             eventHref='https://getanchor.co/blog/open.html?slug=anchor-embedded-finance-hackathon-2023-a-collision-of-creativity-and-innovation&id=65e9a0a473829fd08cd977a1'
           />
           <Hackathon
             title='Optimart'
             href='https://github.com/1802-Labs/Optimart'
-            result='winner, 90+ submissions'
+            result='won a prize'
             event='XRPL Hackathon'
             eventHref='https://dorahacks.io/hackathon/xrpl-hackathon/results'
           />
           <Hackathon
             title='ContractWatch'
             href='https://github.com/1802-Labs/contractwatch'
-            result='prize winner'
+            result='won a prize'
             event='Scroll v0rtex Hackathon'
             eventHref='https://dorahacks.io/hackathon/v0rtex-01/detail'
           />
           <Hackathon
             title='Wrapped Naira'
             href='https://github.com/prettyirrelevant/wrapped-naira'
-            result='prize winner'
+            result='won a prize'
             event='Scroll v0rtex Hackathon'
             eventHref='https://dorahacks.io/hackathon/v0rtex-01/detail'
           />
