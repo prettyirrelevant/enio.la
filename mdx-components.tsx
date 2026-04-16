@@ -9,6 +9,7 @@ import {
 import Link from 'next/link'
 
 import { BlockSideTitle } from '@/components/block-sidetitle'
+import { CopyButton } from '@/components/copy-button'
 
 const cssVariablesTheme = createCssVariablesTheme({})
 
@@ -104,7 +105,10 @@ export const components: Record<
     />
   ),
   pre: (props) => (
-    <pre className='mt-7 whitespace-pre md:whitespace-pre-wrap' {...props} />
+    <pre
+      className='group relative mt-7 whitespace-pre md:whitespace-pre-wrap'
+      {...props}
+    />
   ),
   code: async (props) => {
     if (typeof props.children === 'string') {
@@ -141,10 +145,13 @@ export const components: Record<
       })
 
       return (
-        <code
-          className='inline shiki css-variables text-[0.805rem] sm:text-[13.8px] md:text-[0.92rem]'
-          dangerouslySetInnerHTML={{ __html: code }}
-        />
+        <>
+          <code
+            className='inline shiki css-variables text-[0.7rem] sm:text-[12px] md:text-[0.8rem]'
+            dangerouslySetInnerHTML={{ __html: code }}
+          />
+          <CopyButton text={props.children} />
+        </>
       )
     }
 

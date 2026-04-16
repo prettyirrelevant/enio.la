@@ -16,6 +16,7 @@
     "@tailwindcss/postcss": "4.0.15",
     "@types/mdx": "^2.0.12",
     "clsx": "^2.1.0",
+    "lucide-react": "^1.8.0",
     "next": "16.1.1-canary.6",
     "react": "0.0.0-experimental-408b38ef-20251023",
     "react-dom": "0.0.0-experimental-408b38ef-20251023",
