@@ -97,7 +97,7 @@ export function CV() {
       </header>
 
       <p className='text-umber-400 print:text-umber-600' style={{ fontFamily: 'var(--serif)', fontVariationSettings: '"wght" 480', fontWeight: 400 }}>
-        Software engineer with 5+ years of experience building backend systems, developer tools, crypto payment infrastructure, and production web applications across blockchain, fintech, and open source. I've spent much of my career at Rotki, cofounded a crypto payments product, won several global hackathons, and shipped side projects in Rust, Go, and TypeScript.
+        Software engineer with multiple years of experience building backend systems, developer tools, crypto payment infrastructure, and production web applications across blockchain, fintech, and open source. I've spent much of my career at Rotki, cofounded a crypto payments product, won several global hackathons, and shipped side projects in Rust, Go, and TypeScript.
       </p>
 
       <Section title='Experience'>
