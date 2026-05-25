@@ -86,18 +86,26 @@ export function Timeline() {
         period='Oct 2024 - Mar 2026'
         title='Rotki'
         href='https://rotki.com'
-        role='python backend engineer (2nd stint)'
+        role='Python Backend Engineer'
       >
-        <p>Returned full-time after graduating. Added Solana chain support, built historical balance tracking from scratch, refactored hardcoded USD handling into proper user-selected currency support, added protocol support for Balancer, Aura Finance, Beefy, Yearn, and others.</p>
+        <p>Returned full-time after graduating. Worked on Solana support, historical balance tracking, fiat currency handling, DeFi protocol integrations, exchange support, and transaction decoding.</p>
+        <p>Some of the larger pieces:</p>
+        <ul className='mt-0 list-disc list-outside marker:text-umber-200 pl-5'>
+          <li>built Solana backend support, including spam token filtering and transaction decoding</li>
+          <li>designed historical balance tracking from scratch using archive node data</li>
+          <li>refactored hardcoded USD valuation into proper user-selected currency support</li>
+          <li>added and maintained integrations for Balancer, Aura Finance, Beefy, Yearn, StakeDAO, and others</li>
+          <li>expanded exchange and wallet support, including Coinbase ED25519 API keys and Binance Convert trades</li>
+        </ul>
       </Entry>
 
       <Entry
         period='Jul 2024 - Oct 2024'
         title='Unyte'
         href='https://unyte.africa'
-        role='software engineer'
+        role='Software Engineer'
       >
-        <p>Built insurance policy management and provider onboarding for an API-first insurance platform.</p>
+        <p>Worked on an API-first insurance infrastructure platform. Built backend features for policy management, provider onboarding, and workflows that helped businesses distribute insurance products across African markets.</p>
       </Entry>
 
       <Entry
@@ -105,13 +113,14 @@ export function Timeline() {
         title='Obafemi Awolowo University'
         role='B.Sc. Electrical & Electronics Engineering'
       >
-        <p>Final year project: <a href='https://github.com/prettyirrelevant/final-year-project' target='_blank' rel='noopener noreferrer' className='decoration-from-font underline underline-offset-2 text-[var(--color-accent)] decoration-[var(--color-accent)]/40 hover:decoration-[var(--color-accent)]'>Neuron</a>, a BLE-based attendance system using an ESP32 microcontroller.</p>
+        <p>Final year project: <a href='https://github.com/IsaacAdewumi/Neuron' target='_blank' rel='noopener noreferrer' className='decoration-from-font underline underline-offset-2 text-[var(--color-accent)] decoration-[var(--color-accent)]/40 hover:decoration-[var(--color-accent)]'>Neuron</a>, a BLE-based attendance system using an ESP32 microcontroller.</p>
       </Entry>
 
       <Entry
         period='2023 - 2024'
         title='Hackathons'
       >
+        <p>Built and shipped a few projects across crypto, embedded finance, and developer tooling:</p>
         <ul className='mt-0 list-disc list-outside marker:text-umber-200 pl-5'>
           <Hackathon
             title='BridgeBloc'
@@ -152,58 +161,81 @@ export function Timeline() {
       </Entry>
 
       <Entry
-        period='May 2022 - Jan 2024'
-        title='Flashpay'
-        href='https://github.com/FlashPayInc/flashpay-core'
-        role='lead developer & cofounder'
+        period='May 2022 - 2024'
+        title='FlashPay'
+        href='https://github.com/FlashPayInc'
+        role='Technical Cofounder & Lead Engineer'
       >
-        <p>Payments on Algorand. Secured an Algorand Foundation grant. Led architecture and development.</p>
+        <p>Part-time.</p>
+        <p>Cofounded FlashPay, one of the early payment-link platforms on Algorand. We raised over $40K from the Algorand Foundation and built infrastructure for merchants to accept Algorand-based payments.</p>
+        <p>My work focused on the Django backend service and JavaScript SDK:</p>
+        <ul className='mt-0 list-disc list-outside marker:text-umber-200 pl-5'>
+          <li>led development of the Django backend for payment links, merchant APIs, API keys, wallet setup, transaction verification, webhooks, and revenue reporting</li>
+          <li>built payment lifecycle infrastructure for creating, tracking, verifying, and reconciling payments</li>
+          <li>developed the JavaScript SDK for merchant integrations, including payment initialization, asset configuration, callbacks, and example flows</li>
+          <li>designed API flows and maintained developer documentation for merchants accepting ALGO, USDC, USDT, and other Algorand-based assets</li>
+        </ul>
       </Entry>
 
       <Entry
         period='Apr 2022 - Apr 2023'
         title='Rotki'
         href='https://rotki.com'
-        role='python backend engineer (1st stint)'
+        role='Python Backend Engineer'
       >
-        <p>Replaced Uniswap V3 subgraph dependency with a purely on-chain approach, reduced Electron app memory by ~30% through revamped asset management endpoints, added support for Average Cost Basis and HIFO accounting methods, integrated transaction decoding for protocols like Uniswap V2/V3, Sushiswap, Curve, and MakerDAO. Also added taproot BTC address support, per-user notes, and spam NFT filtering.</p>
+        <p>First full-time backend role in crypto. Worked across accounting, DeFi decoding, asset management, and wallet support.</p>
+        <p>Highlights:</p>
+        <ul className='mt-0 list-disc list-outside marker:text-umber-200 pl-5'>
+          <li>replaced the Uniswap V3 subgraph dependency with a purely on-chain approach</li>
+          <li>reduced Electron app memory usage by about 30% by revamping asset management endpoints</li>
+          <li>added support for Average Cost Basis and HIFO accounting methods</li>
+          <li>integrated transaction decoding for Uniswap V2/V3, Sushiswap, Curve, MakerDAO, and related protocols</li>
+          <li>added Taproot BTC address support, per-user notes, and spam NFT filtering</li>
+        </ul>
       </Entry>
 
       <Entry
         period='Jan 2022 - Apr 2022'
         title='DeCHO'
         href='https://github.com/xcaDeCHO/DeCHO-Backend'
-        role='full stack engineer'
+        role='Full Stack Engineer'
       >
-        <p>Algorand Foundation grant recipient. Built a Swift native module to integrate the Algorand SDK in the React Native app, developed API endpoints with Django REST Framework, and implemented wallet integrations for the web version.</p>
+        <p>Worked on an Algorand Foundation grant-backed product. Built a Swift native module to integrate the Algorand SDK into a React Native app, developed Django REST Framework endpoints, and implemented wallet integrations for the web app.</p>
       </Entry>
 
       <Entry
         period='Oct 2021 - Jan 2022'
         title='Saber Creative Agency'
-        role='software engineer'
+        role='Software Engineer'
       >
-        <p>Built endpoints and UI components for a hospitality management app in Django. Set up CI workflows and improved the testing suite.</p>
+        <p>Built backend endpoints and UI components for a hospitality management application using Django. Also worked on CI workflows and improved the test suite.</p>
       </Entry>
 
       <Entry
         period='Jan 2021 - Mar 2021'
         title='Mul-T-Lock Nigeria'
-        role='django developer intern'
+        role='Django Developer Intern'
       >
-        <p>First internship. Built a product landing page in Django, worked on an authentication system for IoT device integration using Django Channels.</p>
+        <p>First internship. Built a product landing page in Django and worked on an authentication system for IoT device integration using Django Channels.</p>
       </Entry>
 
       <Entry
         period='2020'
-        title='The start'
+        title='Freelance Software Developer'
       >
-        <p>COVID lockdown, Python, Django. The rest followed from there.</p>
+        <p>Started taking client work during the COVID lockdown period. Built web applications and backend systems using Django, JavaScript, TypeScript, Flask, and other web technologies.</p>
+        <p>Some early work included:</p>
+        <ul className='mt-0 list-disc list-outside marker:text-umber-200 pl-5'>
+          <li>Django-based e-commerce websites</li>
+          <li>client-facing web applications</li>
+          <li>a real-time end-to-end encrypted CLI chat application</li>
+        </ul>
+        <p>This was where I started moving from "learning to code" into building software for other people.</p>
       </Entry>
 
       <Entry
         period='Dec 2001'
-        title='Spawned in Lagos'
+        title='Born in Lagos'
       />
     </div>
   )
