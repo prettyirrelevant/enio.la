@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 
-// @ts-expect-error types are not available yet?
 import { ViewTransition } from 'react'
 
 import cn from 'clsx'

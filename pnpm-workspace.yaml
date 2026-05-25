@@ -1,0 +1,11 @@
+packages:
+  - "."
+
+minimumReleaseAge: 20160
+minimumReleaseAgeStrict: true
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
+overrides:
+  postcss: 8.5.14
+allowBuilds:
+  sharp: true
