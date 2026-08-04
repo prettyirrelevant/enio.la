@@ -1,0 +1,126 @@
+export const metadata = {
+  title: 'Two Claude accounts, one laptop.',
+  date: '2026.08.04',
+  description: 'Picking the right Claude account based on which directory I am in.',
+}
+
+# Two Claude accounts, one laptop.
+
+I have a work Claude account and a personal one on the same laptop. Call them
+`work@example.com` and `me@example.com`. Work code lives under
+`~/Developer/Work/Acme`, everything else is mine.
+
+Switching between them means running `/login` and remembering to run it. I wanted the
+directory to decide instead: anything under the work tree uses the work account,
+everything else uses mine.
+
+## What I'm running
+
+macOS on Apple silicon, zsh 5.9, Claude Code 2.1.220 installed with Homebrew. Linux and
+Windows keep credentials in a file, so the approach works there but the details below
+don't carry over.
+
+## Checking the docs
+
+Everyone points at `CLAUDE_CONFIG_DIR`. Two directories, two profiles. Fine, except
+the login lives in the Keychain and not in a file. Does a second config directory get
+its own Keychain entry, or do both profiles fight over one token?
+
+The [authentication docs](https://code.claude.com/docs/en/authentication) have exactly
+one line on this:
+
+> If you've set the `CLAUDE_CONFIG_DIR` environment variable on Linux or Windows, the
+> `.credentials.json` file lives under that directory instead.
+
+Linux and Windows. Not macOS.
+
+## Digging through issues
+
+The Claude Code repo has north of eighty thousand issues, so I had Claude go read them
+instead. It came back with a documentation request for a variable I'd never heard of:
+[`CLAUDE_SECURESTORAGE_CONFIG_DIR`](https://github.com/anthropics/claude-code/issues/79223).
+
+It picks the credential store on its own. On macOS that's a Keychain entry called
+`Claude Code-credentials` plus a hash of whatever path you hand it.
+
+So yes, separate config directories do get separate tokens.
+
+The same search turned up a reason not to use them. `CLAUDE_CONFIG_DIR` leaks on
+2.1.220. The default `CLAUDE.md` still
+[bleeds into the second profile](https://github.com/anthropics/claude-code/issues/80580),
+plugins [install to `~/.claude`](https://github.com/anthropics/claude-code/issues/74393)
+regardless, and interactive sessions may
+[write no transcript at all](https://github.com/anthropics/claude-code/issues/78843).
+Someone had already filed
+[my exact setup](https://github.com/anthropics/claude-code/issues/81278), work and
+personal on one Mac.
+
+## Splitting less
+
+I didn't want two profiles. I wanted two logins. Same skills, same settings, same
+history. The only thing that must never be wrong is which account gets billed.
+
+So I kept a single config directory and gave each account its own credential store.
+Nothing about the config is being isolated, which means none of those bugs apply.
+
+## A script, not a shell function
+
+I assumed a zsh function named `claude` would handle this. My shell scripting isn't
+deep enough to have spotted the flaw, and Claude did: `.zshrc` is only loaded for
+interactive shells. A function covers me typing at a prompt and misses every script,
+cron job and editor plugin, which would run on whatever account they found.
+
+A file on `PATH` is visible to all of those.
+
+```sh
+#!/bin/zsh
+set -eu
+
+# Resolve symlinks first, so a symlinked path can't dodge the rule.
+cwd="${PWD:A}"
+work_root="$HOME/Developer/Work/Acme"
+
+if [[ "$cwd/" == "$work_root/"* ]]; then
+	export CLAUDE_SECURESTORAGE_CONFIG_DIR="$HOME/.claude-account-work"
+	account="work · work@example.com"
+else
+	export CLAUDE_SECURESTORAGE_CONFIG_DIR="$HOME/.claude-account-personal"
+	account="personal · me@example.com"
+fi
+
+# Say it out loud, so a wrong directory is obvious.
+[[ -t 2 ]] && print -u2 -- "claude: $account"
+
+exec /opt/homebrew/bin/claude "$@"
+```
+
+Drop that at `~/.local/bin/claude`, ahead of Homebrew on your `PATH`.
+
+I assumed `.zshenv` already handled that, since it puts `~/.local/bin` first. It
+doesn't. `.zprofile` runs `brew shellenv` afterwards, which prepends Homebrew again,
+and terminals start login shells. `which claude` returned the real binary until I
+re-exported the path after the Homebrew call:
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+The trailing slashes make the match stop at a directory boundary, so `Acme-archive`
+doesn't count as work.
+
+The absolute path stops the shim from finding itself on `PATH` and looping. Homebrew
+repoints that symlink on upgrade, so it never needs a version number. `exec` then
+replaces the shim with the real binary instead of running it as a child.
+
+The script is zsh only. Adapt it if you use another shell.
+
+Neither store has a login in it yet, so you'll need to run `/login` once inside a work
+directory and once outside of one. After that the directory picks the account.
+
+## Caveats
+
+- The account is chosen at launch. `cd` into the work tree mid-session changes
+  nothing, and nothing tells you so.
+- `CLAUDE_SECURESTORAGE_CONFIG_DIR` is undocumented, known from people reading release
+  diffs. Worth rechecking `/status` after an upgrade.
+- Transcripts still share one folder. Billing is separated, the logs aren't.
