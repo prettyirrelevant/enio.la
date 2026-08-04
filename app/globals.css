@@ -301,11 +301,20 @@ article {
 }
 
 @media print {
+  @page {
+    margin: 0.4in;
+  }
   nav {
     display: none;
   }
   body {
     background-color: white;
+    padding: 0;
+  }
+  main {
+    max-width: none;
+  }
+  article {
     padding: 0;
   }
   .content-fade-out {
