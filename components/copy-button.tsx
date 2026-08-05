@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
+import posthog from 'posthog-js'
 
 export function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false)
@@ -9,6 +10,7 @@ export function CopyButton({ text }: { text: string }) {
   const onClick = async () => {
     try {
       await navigator.clipboard.writeText(text)
+      posthog.capture('code_copied')
       setCopied(true)
       setTimeout(() => setCopied(false), 1500)
     } catch {

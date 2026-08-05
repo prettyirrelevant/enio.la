@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import Script from 'next/script'
 
 import { ViewTransition } from 'react'
 
@@ -89,13 +88,6 @@ export default function RootLayout({
             </ViewTransition>
           </main>
         </div>
-        {process.env.NEXT_PUBLIC_SELINE_TOKEN && (
-          <Script
-            src='https://cdn.seline.so/seline.js'
-            data-token={process.env.NEXT_PUBLIC_SELINE_TOKEN}
-            strategy='afterInteractive'
-          />
-        )}
       </body>
     </html>
   )

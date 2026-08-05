@@ -1,9 +1,14 @@
 "use client";
 
+import posthog from "posthog-js";
+
 function PrintButton() {
   return (
     <button
-      onClick={() => window.print()}
+      onClick={() => {
+        posthog.capture("resume_print_requested");
+        window.print();
+      }}
       className="print:hidden text-xs text-umber-300 hover:text-umber-500 transition-colors cursor-pointer"
     >
       print / save as pdf
@@ -191,6 +196,7 @@ function Project({
     <li className="pl-1.5">
       <a
         href={href}
+        onClick={() => posthog.capture("portfolio_project_opened", { project_name: name })}
         target="_blank"
         rel="noopener noreferrer"
         className="font-semibold text-[var(--color-accent)] hover:underline"
@@ -230,6 +236,7 @@ export function CV() {
           <span className="text-umber-200 mx-1.5">|</span>
           <a
             href="mailto:hi@enio.la"
+            onClick={() => posthog.capture("contact_email_clicked")}
             className="text-[var(--color-accent)] hover:underline"
           >
             hi@enio.la
@@ -237,6 +244,7 @@ export function CV() {
           <span className="text-umber-200 mx-1.5">|</span>
           <a
             href="https://github.com/prettyirrelevant"
+            onClick={() => posthog.capture("social_profile_clicked", { platform: "github" })}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--color-accent)] hover:underline"
@@ -246,6 +254,7 @@ export function CV() {
           <span className="text-umber-200 mx-1.5">|</span>
           <a
             href="https://www.linkedin.com/in/isaac-adewumi"
+            onClick={() => posthog.capture("social_profile_clicked", { platform: "linkedin" })}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--color-accent)] hover:underline"
