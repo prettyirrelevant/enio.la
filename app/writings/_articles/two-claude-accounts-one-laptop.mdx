@@ -59,15 +59,3 @@ route, sets `CLAUDE_CONFIG_DIR`, and forwards every argument to the real command
 
 Run `routeai which` to inspect the selected profile. A directory such as `Acme-archive`
 stays on the personal profile because route matching preserves directory boundaries.
-
-## Caveats
-
-- The profile is selected at launch. Changing directories inside a session does not
-  change its account.
-- The profiles do not share user settings, history, plugins, or user-level memory.
-  Project files remain shared through the normal filesystem.
-- `ANTHROPIC_API_KEY` takes precedence over a Claude Pro login. Remove it when you want
-  subscription usage.
-- This separates application state rather than operating-system access. An
-  [open report](https://github.com/anthropics/claude-code/issues/80580) also describes
-  user-level `CLAUDE.md` leakage between profiles.
