@@ -43,11 +43,10 @@ Create the profiles, add the work route, and install the transparent `claude` co
 routeai init --default personal
 routeai profile add work
 routeai route add work ~/Developer/Work/Acme
-routeai shim install
 ```
 
-If the final command prints a `PATH` step, add it to your shell profile. Then restart
-your shell and sign each profile in:
+`routeai init` installs the transparent command. If it prints a `PATH` step, add that
+line to your shell profile. Then restart your shell and sign each profile in:
 
 ```sh
 routeai login claude --profile personal
