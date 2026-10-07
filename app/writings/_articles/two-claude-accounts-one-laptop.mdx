@@ -24,36 +24,42 @@ directory, so the profiles do not overwrite each other's login.
 
 ## Route by directory
 
-I put this script at `~/.local/bin/claude`, before the real Claude binary on `PATH`:
+I built [routeai](https://github.com/prettyirrelevant/routeai) to manage the profiles and
+directory routes. Install the latest release with mise:
 
 ```sh
-#!/bin/zsh
-set -eu
-
-cwd="${PWD:A}"
-work_root="$HOME/Developer/Work/Acme"
-
-if [[ "$cwd/" == "$work_root/"* ]]; then
-	export CLAUDE_CONFIG_DIR="$HOME/.claude-work"
-	account="work · work@example.com"
-else
-	export CLAUDE_CONFIG_DIR="$HOME/.claude-personal"
-	account="personal · me@example.com"
-fi
-
-[[ -t 2 ]] && print -u2 -- "claude: $account"
-
-exec /absolute/path/to/the/real/claude "$@"
+mise use -g github:prettyirrelevant/routeai
 ```
 
-Run `command -v claude` before installing the script, then replace the final command
-with that absolute path. The absolute path prevents the script from calling itself.
+You can also build the latest source with Cargo:
 
-The trailing slashes enforce a directory boundary. A directory such as `Acme-archive`
-therefore stays on the personal account.
+```sh
+cargo install --git https://github.com/prettyirrelevant/routeai
+```
 
-Run `claude auth login` once inside the work tree and once outside it. Run
-`claude auth status` in both locations to verify the selected email address.
+Create the profiles, add the work route, and install the transparent `claude` command:
+
+```sh
+routeai init --default personal
+routeai profile add work
+routeai route add work ~/Developer/Work/Acme
+routeai shim install
+```
+
+If the final command prints a `PATH` step, add it to your shell profile. Then restart
+your shell and sign each profile in:
+
+```sh
+routeai login claude --profile personal
+routeai login claude --profile work
+routeai doctor
+```
+
+After setup, use `claude` normally. `routeai` selects the longest matching directory
+route, sets `CLAUDE_CONFIG_DIR`, and forwards every argument to the real command.
+
+Run `routeai which` to inspect the selected profile. A directory such as `Acme-archive`
+stays on the personal profile because route matching preserves directory boundaries.
 
 ## Caveats
 
