@@ -26,7 +26,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section className={`mt-10 print:mt-3 first:mt-0 ${className || ""}`}>
+    <section className={`mt-10 print:mt-2.5 first:mt-0 ${className || ""}`}>
       <h2
         className="text-xs uppercase tracking-widest text-umber-300 print:text-umber-600 mb-4 print:mb-1.5 print:text-[10px]"
         style={{ fontFamily: "var(--sans)" }}
@@ -102,7 +102,7 @@ function Job({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="mb-6 print:mb-2 last:mb-0 print:break-inside-avoid">
+    <div className="mb-6 print:mb-1.5 last:mb-0 print:break-inside-avoid">
       <RoleHeading
         title={title}
         company={company}
@@ -279,6 +279,17 @@ export function CV() {
       </p>
 
       <Section title="Experience">
+        <Job
+          title="Software Engineer"
+          company="Shiga Digital"
+          location="Remote"
+          period="Aug 2026 - Present"
+        >
+          <li className="pl-1.5">
+            Building stablecoin on-ramp and off-ramp orchestration for Nigeria.
+          </li>
+        </Job>
+
         <Job
           title="Python Backend Engineer"
           company="Rotki Solutions GmbH"

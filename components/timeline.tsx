@@ -83,6 +83,15 @@ export function Timeline() {
   return (
     <div className='mt-7 relative'>
       <Entry
+        period='Aug 2026 - Present'
+        title='Shiga Digital'
+        href='https://shiga.io'
+        role='Software Engineer'
+      >
+        <p>Building stablecoin on-ramp and off-ramp orchestration for Nigeria. Remote.</p>
+      </Entry>
+
+      <Entry
         period='Oct 2024 - Mar 2026'
         title='Rotki'
         href='https://rotki.com'
