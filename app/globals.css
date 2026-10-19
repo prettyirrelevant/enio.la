@@ -266,6 +266,12 @@ article {
 }
 
 @supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-group(crossfade) {
+    animation: none;
+  }
+
   @media not (prefers-reduced-motion: reduce) {
     ::view-transition-old(crossfade) {
       animation: hide 0.4s cubic-bezier(0.6, 0, 0.8, 1) forwards;

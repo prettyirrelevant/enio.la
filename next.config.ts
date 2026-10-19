@@ -27,6 +27,7 @@ export default withMDX()({
     },
   ],
   experimental: {
+    viewTransition: true,
     mdxRs: {
       mdxType: 'gfm',
     },
