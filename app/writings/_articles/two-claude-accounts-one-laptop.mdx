@@ -1,0 +1,61 @@
+export const metadata = {
+  title: 'Two Claude accounts, one laptop.',
+  date: '2026.08.04',
+  description: 'Picking the right Claude account based on which directory I am in.',
+}
+
+# Two Claude accounts, one laptop.
+
+I have separate Claude Pro accounts for work and personal projects. Work code lives
+under `~/Developer/Work/Acme`, and everything else is personal. I wanted the current
+directory to pick the account automatically.
+
+_Updated 7 October 2026 after Anthropic documented multiple-account support._
+
+## The supported mechanism
+
+Anthropic now documents
+[multiple accounts](https://code.claude.com/docs/en/authentication#log-in-with-multiple-accounts)
+through `CLAUDE_CONFIG_DIR`. Each directory gets its own claude.ai login, settings,
+session history, and plugins.
+
+This also works on macOS. Claude Code keys each Keychain entry to its configuration
+directory, so the profiles do not overwrite each other's login.
+
+## Route by directory
+
+I built [routeai](https://github.com/prettyirrelevant/routeai) to manage the profiles and
+directory routes. Install the latest release with mise:
+
+```sh
+mise use -g github:prettyirrelevant/routeai
+```
+
+You can also build the latest source with Cargo:
+
+```sh
+cargo install --git https://github.com/prettyirrelevant/routeai
+```
+
+Create the profiles, add the work route, and install the transparent `claude` command:
+
+```sh
+routeai init --default personal
+routeai profile add work
+routeai route add work ~/Developer/Work/Acme
+```
+
+`routeai init` installs the transparent command. If it prints a `PATH` step, add that
+line to your shell profile. Then restart your shell and sign each profile in:
+
+```sh
+routeai login claude --profile personal
+routeai login claude --profile work
+routeai doctor
+```
+
+After setup, use `claude` normally. `routeai` selects the longest matching directory
+route, sets `CLAUDE_CONFIG_DIR`, and forwards every argument to the real command.
+
+Run `routeai which` to inspect the selected profile. A directory such as `Acme-archive`
+stays on the personal profile because route matching preserves directory boundaries.
