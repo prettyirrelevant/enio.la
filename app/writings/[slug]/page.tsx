@@ -1,6 +1,8 @@
 import { promises as fs } from 'fs'
 import path from 'path'
 
+import { siteOpenGraph } from '@/app/_metadata'
+
 export default async function Page(props: {
   params: Promise<{
     slug: string
@@ -41,5 +43,12 @@ export async function generateMetadata(props: {
   return {
     title: metadata.title,
     description: metadata.description,
+    openGraph: {
+      ...siteOpenGraph,
+      title: metadata.title,
+      description: metadata.description,
+      url: `/writings/${params.slug}`,
+      type: 'article',
+    },
   }
 }

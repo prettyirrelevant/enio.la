@@ -6,6 +6,7 @@ import cn from 'clsx'
 import localFont from 'next/font/local'
 
 import Navbar from '@/components/navbar'
+import { siteName, siteOpenGraph } from '@/app/_metadata'
 import './globals.css'
 
 const sans = localFont({
@@ -39,11 +40,9 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://enio.la'),
   openGraph: {
-    title: 'Isaac Adewumi',
-    description: 'Software engineer in Lagos, Nigeria',
-    siteName: 'Isaac Adewumi',
+    ...siteOpenGraph,
+    title: siteName,
     url: 'https://enio.la',
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
