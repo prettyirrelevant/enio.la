@@ -6,6 +6,6 @@ minimumReleaseAgeStrict: true
 blockExoticSubdeps: true
 trustPolicy: no-downgrade
 overrides:
-  postcss: 8.5.14
+  postcss: 8.5.32
 allowBuilds:
   sharp: true
