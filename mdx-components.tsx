@@ -10,6 +10,7 @@ import Link from 'next/link'
 
 import { BlockSideTitle } from '@/components/block-sidetitle'
 import { CopyButton } from '@/components/copy-button'
+import { Tweet } from '@/components/tweet'
 
 const cssVariablesTheme = createCssVariablesTheme({})
 
@@ -100,7 +101,7 @@ export const components: Record<
   p: (props) => <p className='mt-7' {...props} />,
   blockquote: (props) => (
     <blockquote
-      className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-umber-400'
+      className='mt-7 pl-5 not-mobile:text-umber-400'
       {...props}
     />
   ),
@@ -159,6 +160,7 @@ export const components: Record<
   },
   hr: (props) => <hr className='my-14 w-24 border-umber-border' {...props} />,
   BlockSideTitle,
+  Tweet,
 }
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
