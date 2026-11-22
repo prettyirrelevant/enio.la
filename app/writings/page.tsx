@@ -2,8 +2,12 @@ import { promises as fs } from 'fs'
 import Link from 'next/link'
 import path from 'path'
 
+import { pageOpenGraph } from '@/app/_metadata'
+
 export const metadata = {
   title: 'Writings',
+  description: 'Essays and technical notes.',
+  openGraph: pageOpenGraph('Writings', '/writings', 'Essays and technical notes.'),
 }
 
 const articlesDirectory = path.join(
