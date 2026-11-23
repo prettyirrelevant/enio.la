@@ -22,5 +22,8 @@ if (!projectToken || !apiHost) {
       capture_unhandled_rejections: true,
       capture_console_errors: false,
     },
+    capture_performance: {
+      web_vitals: true,
+    },
   })
 }
